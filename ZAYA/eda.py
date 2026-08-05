@@ -10,7 +10,10 @@ produce the SAME four plots:
   3. refusal_bubbles       rows = refused prompt/turn IDs, cols = all 40 layers,
                            one bubble per (row, layer) = the top-1 expert
                            (colour = expert ID, size = its routing probability)
-  4. low_variance_baseline top-k experts at a target layer, mean +/- std over refusals
+  4. low_variance_baseline per-layer dominant expert across ALL 40 layers:
+                           x = layer, y = mean global-max routing probability
+                           (mean +/- std over refusals), point coloured/labelled
+                           with the modal top-1 expert at that layer
 
 and for MULTITURN additionally:
 
@@ -20,6 +23,13 @@ and for MULTITURN additionally:
 Payload schema (per .pt, dict):
   pooled_probs (L,E) rows sum to 1 | pooled_logits (L,E) | valid_mask (L,E) bool | ...
 ZAYA-8B: L=40 layers, E=17 experts, top-1 routing.
+
+NOTE: the *_refusals.json files list the refused items (single-turn -> prompt_id ;
+multi-turn -> (conversation_id, turn_id)). The loaders load ALL available tensors
+and label those ids refused=True; every other tensor found on disk is Compliant.
+  - PCA clusters  -> uses BOTH classes (separate compliant / refused clusters)
+  - Context-drift Sankey -> uses BOTH classes (Compliant -> Refused intent drift)
+  - Per-layer baseline & refusal bubbles -> filter to refusals only
 """
 
 import os
@@ -53,8 +63,8 @@ NUM_PROMPTS = 100
 NUM_CONVS = 100
 NUM_TURNS = 3
 
-TARGET_LAYER = 20        # layer used by the low-variance baseline
-TOP_K = 6                # experts shown in the baseline
+TARGET_LAYER = 20        # (unused by the per-layer baseline; kept for reference)
+TOP_K = 6                # (unused by the per-layer baseline; kept for reference)
 N_EXPERTS = 17           # ZAYA expert count (for consistent colour scale)
 
 
@@ -156,7 +166,14 @@ def load_multi_turn_refusals(base_dir):
 
 # ---- sample builders: each sample = {label, probs, mask, refused, conv?, turn?} ----
 def load_single_turn_samples(base_dir, cat, refused_ids):
+    """Load ALL available prompt tensors; label refusals from the JSON ids.
+
+    refused=True comes from *_refusals.json; every other tensor found on disk is
+    Compliant. PCA uses both classes (separate clusters); the per-layer baseline
+    and refusal bubbles filter to refusals only.
+    """
     tdir = _resolve_tensor_dir(base_dir, cat)
+    refused_set = set(refused_ids)
     samples = []
     for i in range(NUM_PROMPTS):
         fp = os.path.join(tdir, f"prompt_{i:04d}.pt")
@@ -164,11 +181,20 @@ def load_single_turn_samples(base_dir, cat, refused_ids):
             continue
         probs, mask = probs_and_mask(load_payload(fp))
         samples.append({"label": i, "probs": probs, "mask": mask,
-                        "refused": i in set(refused_ids)})
+                        "refused": i in refused_set})
+    n_ref = sum(s["refused"] for s in samples)
+    print(f"  [{cat}] loaded {len(samples)} tensors "
+          f"({n_ref} refused, {len(samples) - n_ref} compliant)")
     return samples
 
 
 def load_multi_turn_samples(base_dir, refusals):
+    """Load ALL available (conv,turn) tensors; label refusals from the JSON pairs.
+
+    refused=True comes from multi_turn_refusals.json; every other turn tensor
+    found on disk is Compliant. The Sankey needs both states to show the
+    Compliant -> Refused context drift across turns.
+    """
     tdir = _resolve_tensor_dir(base_dir, MULTI_TURN_DIR)
     samples = []
     for c in range(NUM_CONVS):
@@ -179,6 +205,9 @@ def load_multi_turn_samples(base_dir, refusals):
             probs, mask = probs_and_mask(load_payload(fp))
             samples.append({"label": f"c{c}t{t}", "probs": probs, "mask": mask,
                             "refused": (c, t) in refusals, "conv": c, "turn": t})
+    n_ref = sum(s["refused"] for s in samples)
+    print(f"  [multiturn] loaded {len(samples)} tensors "
+          f"({n_ref} refused, {len(samples) - n_ref} compliant)")
     return samples
 
 
@@ -291,37 +320,102 @@ def plot_refusal_bubbles(samples, name, save_dir):
 
 
 # ==========================================================================
-# 4. LOW-VARIANCE BASELINE  (top-k experts at target layer, mean +/- std)
+# 4. LOW-VARIANCE BASELINE  (per-layer dominant expert across ALL layers)
 # ==========================================================================
-def plot_low_variance_baseline(samples, name, save_dir,
-                               target_layer=TARGET_LAYER, top_k=TOP_K):
+def plot_low_variance_baseline(samples, name, save_dir, annotate_agreement=False):
+    """
+    Per-layer refusal baseline spanning every MoE layer.
+
+      x-axis : layer index (0 .. L-1)
+      y-axis : mean of the global-max (top-1) routing probability across refused
+               prompts, with +/- std error bars
+      colour + label of each point : the MODAL top-1 expert at that layer
+                                     (the expert most refusals routed to there)
+
+    The std captures prompt-to-prompt spread in the top-1 probability, which
+    widens at layers where refusals disagree about the dominant expert.
+
+    Set annotate_agreement=True to also print, under each expert label, the
+    percentage of refusals that actually routed to that modal expert.
+    """
     refused = [s for s in samples if s["refused"]]
     if not refused:
         print(f"  [{name}] baseline skipped (no refusals)"); return
+
     n_layers = min(s["probs"].shape[0] for s in refused)
-    tl = target_layer if target_layer < n_layers else n_layers // 2
+    n_prompts = len(refused)
 
-    layer_data = np.array([s["probs"][tl] for s in refused])         # (P, E)
-    n_total = layer_data.shape[0]
-    mean_p, std_p = layer_data.mean(axis=0), layer_data.std(axis=0)
-    top = np.sort(np.argsort(mean_p)[-top_k:])
+    # per-prompt, per-layer: top-1 expert id and its (max) routing probability
+    top_expert = np.zeros((n_prompts, n_layers), dtype=int)    # (P, L)
+    top_prob = np.zeros((n_prompts, n_layers), dtype=float)    # (P, L)
+    for i, s in enumerate(refused):
+        p = s["probs"][:n_layers]                              # (L, E)
+        msk = s["mask"][:n_layers] if s.get("mask") is not None else None
+        de = dominant_expert_per_layer(p, msk)                 # (L,)
+        top_expert[i] = de
+        top_prob[i] = p[np.arange(n_layers), de]
 
-    plt.figure(figsize=(10, 5), dpi=200)
-    x = np.arange(len(top))
-    plt.errorbar(x, mean_p[top], yerr=std_p[top], fmt="o", color="#D32F2F",
-                 ecolor="black", elinewidth=2, capsize=6, capthick=2, markersize=12,
-                 label=r"Empirical Mean ($\mu$) $\pm$ StdDev ($\sigma$)")
-    plt.title(f"Low-Variance Refusal Baseline — {name}\nTop {top_k} Experts at "
-              f"Layer {tl} ({n_total} refusals)", fontweight="bold", fontsize=13)
-    plt.xlabel("Expert ID", fontsize=12)
-    plt.ylabel("Global Max Routing Probability", fontsize=12)
-    plt.xticks(x, [f"Exp {e}" for e in top], fontweight="bold")
-    plt.ylim(0, 1.05)
-    plt.grid(True, ls=":", alpha=0.6)
-    plt.legend(fontsize=11)
+    mean_prob = top_prob.mean(axis=0)                          # (L,)
+    std_prob = top_prob.std(axis=0)                            # (L,)
+
+    # modal (most frequent) top-1 expert per layer + agreement share
+    modal_expert = np.zeros(n_layers, dtype=int)
+    modal_share = np.zeros(n_layers, dtype=float)
+    for l in range(n_layers):
+        counts = np.bincount(top_expert[:, l], minlength=N_EXPERTS)
+        modal_expert[l] = counts.argmax()
+        modal_share[l] = counts.max() / n_prompts
+
+    # --- OPTIONAL: make std measure disagreement about WHICH expert instead ---
+    # Uncomment to plot the mean/std of the modal expert's probability across
+    # ALL prompts (deviating prompts contribute their low prob -> wider std):
+    # for l in range(n_layers):
+    #     col = np.array([s["probs"][l, modal_expert[l]] for s in refused])
+    #     mean_prob[l], std_prob[l] = col.mean(), col.std()
+
+    # ---- plot ----
+    n_experts = max(int(top_expert.max()) + 1, N_EXPERTS)
+    cmap = plt.get_cmap("tab20", n_experts)
+    norm = BoundaryNorm(np.arange(-0.5, n_experts + 0.5), cmap.N)
+
+    fig, ax = plt.subplots(figsize=(18, 7), dpi=200)
+    x = np.arange(n_layers)
+
+    # error bars first (behind the coloured points)
+    ax.errorbar(x, mean_prob, yerr=std_prob, fmt="none",
+                ecolor="black", elinewidth=1.3, capsize=3, capthick=1.3,
+                alpha=0.65, zorder=2)
+    # points coloured by modal expert
+    sc = ax.scatter(x, mean_prob, c=modal_expert, cmap=cmap, norm=norm,
+                    s=130, edgecolors="black", linewidth=0.6, zorder=3)
+
+    # label each point with its dominant expert id (and optional agreement %)
+    for l in range(n_layers):
+        lbl = f"E{modal_expert[l]}"
+        if annotate_agreement:
+            lbl += f"\n{modal_share[l]*100:.0f}%"
+        ax.annotate(lbl, (x[l], mean_prob[l] + std_prob[l]),
+                    textcoords="offset points", xytext=(0, 6),
+                    ha="center", va="bottom", fontsize=7, fontweight="bold",
+                    color=cmap(norm(modal_expert[l])))
+
+    ax.set_title(
+        f"Per-Layer Refusal Baseline — {name}\n"
+        f"Dominant expert & global-max routing probability "
+        f"(mean \u00b1 std over {n_prompts} refusals, {n_layers} layers)",
+        fontweight="bold", fontsize=14)
+    ax.set_xlabel("MoE Layer", fontsize=12)
+    ax.set_ylabel("Global Max Routing Probability", fontsize=12)
+    ax.set_xticks(range(0, n_layers, 2))
+    ax.set_ylim(0, min(1.05, float((mean_prob + std_prob).max()) * 1.30))
+    ax.grid(True, ls=":", alpha=0.5)
+
+    cb = fig.colorbar(sc, ax=ax, ticks=range(n_experts), pad=0.01)
+    cb.set_label("Modal Top-1 Expert ID", fontsize=10)
+
     plt.tight_layout()
     out = os.path.join(save_dir, f"{name}_low_variance_baseline.png")
-    plt.savefig(out); plt.close()
+    plt.savefig(out, bbox_inches="tight"); plt.close()
     print(f"  [{name}] -> {out}")
 
 
