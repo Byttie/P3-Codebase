@@ -1,6 +1,6 @@
 """
-ZAYA MoE Routing — EDA v4  (corrected)
-======================================
+ZAYA MoE Routing — EDA v4  (corrected layout resolution)
+========================================================
 
 Semantics (per the dataset definition):
     * REFUSED   = the safety policy held; the model did NOT get jailbroken  -> SAFE
@@ -31,20 +31,6 @@ and for MULTITURN additionally:
 Payload schema (per .pt, dict):
   pooled_probs (L,E) rows sum to 1 | pooled_logits (L,E) | valid_mask (L,E) bool | ...
 ZAYA-8B: L=40 layers, E=17 experts, top-1 routing.
-
-CHANGES vs v3
--------------
-  * Sankey legend/colours/labels corrected: Refused=safe (green), Complied=jailbroken
-    (red); "drift into harmful" is now Refused->Complied, "recovered" is Complied->Refused.
-  * probs_and_mask softmaxes a logits fallback instead of treating logits as probs,
-    and drops a valid_mask whose shape does not match the probs tensor.
-  * PCA truncates every sample to a common (L,E) shape and standardises features,
-    instead of zero-padding to max length (which leaked prompt-length into the split).
-  * clean_score_max_proof retitled to an honest per-sample sanity check with an
-    auto-scaled y-axis and a warning if the sums drift from 1.0.
-  * Optional  --audit  pass flags refused-labelled items whose model_response looks
-    compliant (heuristic; for manual review of label quality).
-  * matplotlib get_cmap deprecation avoided; a 3-D tensor's pooling axis is asserted.
 """
 
 import os
@@ -64,14 +50,16 @@ from sklearn.decomposition import PCA
 # ==========================================================================
 # CONFIG
 # ==========================================================================
-BASE_DIR = "."
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))   # this script's folder, not the CWD
 
+# Folder names match your tree structure: each family has a *_mean dir holding the
+# mean-pooled tensors under moe_routing_tensors/. We visualise the MEAN tensors.
 SINGLE_TURN = {
-    "m2s-hyphenize": "m2s_hyphenize_refusals.json",
-    "m2s-numberize": "m2s_numberize_refusals.json",
-    "m2s-pythonize": "m2s_pythonize_refusals.json",
+    "m2s-hyphenize_mean": "m2s_hyphenize_refusals.json",
+    "m2s-numberize_mean": "m2s_numberize_refusals.json",
+    "m2s-pythonize_mean": "m2s_pythonize_refusals.json",
 }
-MULTI_TURN_DIR = "multi-turn"
+MULTI_TURN_DIR = "multi-turn_mean"
 MULTI_TURN_REFUSALS = "multi_turn_refusals.json"
 
 NUM_PROMPTS = 100
@@ -155,16 +143,37 @@ def dominant_expert_per_layer(probs, mask=None):
     return np.argmax(m, axis=1)
 
 
+def _resolve_family_dir(base_dir, cat):
+    """Locates the family category folder, checking both direct path and parent family path."""
+    direct = os.path.join(base_dir, cat)
+    if os.path.isdir(direct):
+        return direct
+    
+    # Check nested under parent family directory (e.g. m2s-pythonize/m2s-pythonize_mean)
+    prefix = cat.replace("_mean", "").replace("_topk", "")
+    nested = os.path.join(base_dir, prefix, cat)
+    if os.path.isdir(nested):
+        return nested
+        
+    return direct
+
+
 def _resolve_tensor_dir(base_dir, sub):
-    nested = os.path.join(base_dir, sub, "moe_routing_tensors")
-    return nested if os.path.isdir(nested) else os.path.join(base_dir, sub)
+    fam_dir = _resolve_family_dir(base_dir, sub)
+    # Check all common variations of tensor subfolder names
+    for tensor_sub in ["moe_routing_tensors_mean", "moe_routing_tensors_topk", "moe_routing_tensors"]:
+        candidate = os.path.join(fam_dir, tensor_sub)
+        if os.path.isdir(candidate):
+            return candidate
+    return fam_dir
 
 
 def _find_json(base_dir, cat, filename):
-    for c in [os.path.join(base_dir, filename),
-              os.path.join(base_dir, cat, filename),
-              os.path.join(base_dir, cat, "single_prompt_refusals.json"),
-              os.path.join(base_dir, MULTI_TURN_DIR, filename)]:
+    fam_dir = _resolve_family_dir(base_dir, cat)
+    for c in [os.path.join(fam_dir, filename),
+              os.path.join(fam_dir, "single_prompt_refusals.json"),
+              os.path.join(base_dir, filename),
+              os.path.join(base_dir, cat, filename)]:
         if os.path.exists(c):
             return c
     return None
@@ -190,7 +199,8 @@ def _find_multi_turn_json(base_dir):
     explicit = _find_json(base_dir, MULTI_TURN_DIR, MULTI_TURN_REFUSALS)
     if explicit:
         return explicit
-    for d in (base_dir, os.path.join(base_dir, MULTI_TURN_DIR)):
+    fam_dir = _resolve_family_dir(base_dir, MULTI_TURN_DIR)
+    for d in (base_dir, os.path.join(base_dir, MULTI_TURN_DIR), fam_dir):
         for pat in ["*multi*turn*refus*.json", "*multiturn*refus*.json",
                     "*flagged*refus*.json", "*refus*.json"]:
             for hit in sorted(glob.glob(os.path.join(d, pat))):
@@ -218,6 +228,18 @@ def load_multi_turn_refusals(base_dir):
 
 
 # ---- sample builders: each sample = {label, probs, mask, refused, conv?, turn?} ----
+def _diagnose_missing(base_dir, cat):
+    """Explain WHY a family produced 0 tensors, instead of silently skipping."""
+    fam_dir = _resolve_family_dir(base_dir, cat)
+    nested = _resolve_tensor_dir(base_dir, cat)
+    if not os.path.isdir(fam_dir):
+        print(f"  [{cat}] folder does not exist: {fam_dir}")
+        print(f"          (looked relative to base-dir={base_dir!r})")
+    elif not os.path.isdir(nested) and not glob.glob(os.path.join(fam_dir, "*.pt")):
+        print(f"  [{cat}] folder exists but has no valid tensor subdirectory and no *.pt: {fam_dir}")
+    return
+
+
 def load_single_turn_samples(base_dir, cat, refused_ids):
     """Load ALL available prompt tensors; label refusals from the JSON ids.
 
@@ -293,13 +315,7 @@ def _looks_refused(resp):
 
 
 def audit_refusal_labels(base_dir):
-    """Print refused-labelled items whose model_response does NOT look like a refusal.
-
-    Heuristic only — use it to spot-check label quality, not as ground truth. An
-    item is flagged when it is tagged refused but its final answer either lacks any
-    refusal phrase or is long/substantive (i.e. likely a hedged compliance, or an
-    unverifiable truncated reasoning trace).
-    """
+    """Print refused-labelled items whose model_response does NOT look like a refusal."""
     print("\n=== Label audit (heuristic — manual review recommended) ===")
     files = dict(SINGLE_TURN)
     files["multi-turn"] = MULTI_TURN_REFUSALS
@@ -333,12 +349,7 @@ def audit_refusal_labels(base_dir):
 # 1. PCA CLUSTERS  (refused/safe vs complied/jailbroken)
 # ==========================================================================
 def _feature_matrix(samples):
-    """Truncate every sample to a common (L,E) shape, flatten, and standardise.
-
-    Zero-padding to the longest sample (the v3 behaviour) let prompt length leak
-    into PC1/PC2; truncating to the shared shape and z-scoring each feature keeps
-    the projection about routing content, not sequence length.
-    """
+    """Truncate every sample to a common (L,E) shape, flatten, and standardise."""
     Lmin = min(s["probs"].shape[0] for s in samples)
     Emin = min(s["probs"].shape[1] for s in samples)
     X = np.array([s["probs"][:Lmin, :Emin].flatten() for s in samples])
@@ -391,7 +402,6 @@ def plot_clean_score_max_proof(samples, name, save_dir):
               fontsize=13, fontweight="bold", pad=12)
     plt.xlabel(f"MoE Layer (0 to {n - 1})", fontweight="bold")
     plt.ylabel("Sum of Probabilities", fontweight="bold")
-    # auto-scale so a non-normalised tensor is visibly wrong instead of clipped away
     lo, hi = float(layer_sums.min()), float(layer_sums.max())
     pad = max(0.05, (hi - lo) * 0.5)
     plt.ylim(min(0.95, lo - pad), max(1.05, hi + pad))
@@ -450,7 +460,6 @@ def plot_refusal_bubbles(samples, name, save_dir):
     out = os.path.join(save_dir, f"{name}_refusal_bubbles.png")
     plt.savefig(out, bbox_inches="tight"); plt.close()
 
-    # report the modal expert per layer for quick reading
     modal = [np.bincount(E[:, l]).argmax() for l in range(L)]
     print(f"  [{name}] -> {out}")
     print(f"      modal top-1 expert by layer: "
@@ -541,13 +550,6 @@ def plot_low_variance_baseline(samples, name, save_dir, annotate_agreement=False
 # ==========================================================================
 # 5. MULTI-TURN REFUSAL ATTRITION FUNNEL  (multiturn only)
 # ==========================================================================
-# NOTE: the multi-turn JSON records ONE terminal event per conversation -- the
-# single turn at which it refused (here: 31 conversations at turns 11/13/7). It
-# contains NO per-turn compliant/refused state, so a Compliant<->Refused Sankey
-# with cross-turn flows cannot be derived from it. Each conversation instead has
-# one outcome: it refuses at some turn (safe) or never refuses (jailbroken). This
-# funnel peels refusals off turn by turn; whatever survives every turn is
-# jailbroken, giving  ASR = jailbroken / n_convs  (matches the reported ASR).
 def _ribbon(ax, x0, x1, y0a, y0b, y1a, y1b, color, alpha=0.85):
     xm = (x0 + x1) / 2
     verts = [(x0, y0a), (xm, y0a), (xm, y1a), (x1, y1a),
@@ -632,9 +634,11 @@ def plot_multiturn_refusal_funnel(refusal_pairs, save_dir, n_convs=NUM_CONVS,
 # ==========================================================================
 # DRIVER
 # ==========================================================================
-def run_group(samples, name, save_dir):
+def run_group(samples, name, save_dir, base_dir=None):
     if not samples:
         print(f"  [{name}] no tensors found; skipped")
+        if base_dir is not None:
+            _diagnose_missing(base_dir, name)
         return
     print(f"\n--- {name}  ({len(samples)} tensors, "
           f"{sum(s['refused'] for s in samples)} refused) ---")
@@ -656,13 +660,12 @@ def main(base_dir=BASE_DIR, audit=False):
         audit_refusal_labels(base_dir)
 
     for cat, ids in single_ref.items():
-        run_group(load_single_turn_samples(base_dir, cat, ids), cat, vis)
+        run_group(load_single_turn_samples(base_dir, cat, ids), cat, vis, base_dir)
 
-    # ASR-consistent multi-turn summary (derived directly from the refusal JSON;
-    # works even with no .pt tensors present).
+    # ASR-consistent multi-turn summary (derived directly from the refusal JSON)
     plot_multiturn_refusal_funnel(mt_pairs, vis)
     # per-refusal routing plots for any multi-turn tensors that exist on disk:
-    run_group(load_multi_turn_samples(base_dir, mt_pairs), "multiturn", vis)
+    run_group(load_multi_turn_samples(base_dir, mt_pairs), MULTI_TURN_DIR, vis, base_dir)
 
     print(f"\nDone. See {vis}\n")
 
