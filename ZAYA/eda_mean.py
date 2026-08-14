@@ -416,13 +416,16 @@ def plot_clean_score_max_proof(samples, name, save_dir):
 # ==========================================================================
 # 3. REFUSAL BUBBLES  (rows = refusals, cols = layers, bubble = top-1 expert)
 # ==========================================================================
-def plot_refusal_bubbles(samples, name, save_dir):
-    refused = [s for s in samples if s["refused"]]
-    if not refused:
-        print(f"  [{name}] bubbles skipped (no refusals)"); return
+def plot_refusal_bubbles(samples, name, save_dir, which="refused"):
+    # which = "refused" (SAFE) or "complied" (jailbroken). Complied = not refused.
+    want_ref = (which == "refused")
+    subset = [s for s in samples if s["refused"] == want_ref]
+    cls_label = "Refusal" if want_ref else "Complied (Jailbroken)"
+    if not subset:
+        print(f"  [{name}] {which} bubbles skipped (no {which} samples)"); return
 
     rows_expert, rows_prob, ylabels = [], [], []
-    for s in refused:
+    for s in subset:
         de = dominant_expert_per_layer(s["probs"], s["mask"])       # (L,)
         prob = s["probs"][np.arange(len(de)), de]                   # its probability
         rows_expert.append(de); rows_prob.append(prob); ylabels.append(s["label"])
@@ -443,11 +446,11 @@ def plot_refusal_bubbles(samples, name, save_dir):
     fig, ax = plt.subplots(figsize=(15, max(5, 0.30 * P + 2)), dpi=200)
     sc = ax.scatter(xs, ys, c=cols, s=sizes, cmap=cmap, norm=norm,
                     edgecolors="black", linewidth=0.3, alpha=0.9)
-    ax.set_title(f"Refusal Bubbles — {name}  (top-1 expert per layer; "
-                 f"size = routing prob.)  [{P} refusals x {L} layers]",
+    ax.set_title(f"{cls_label} Bubbles — {name}  (top-1 expert per layer; "
+                 f"size = routing prob.)  [{P} {which} x {L} layers]",
                  fontweight="bold", fontsize=13)
     ax.set_xlabel("MoE Layer (0 .. {})".format(L - 1), fontsize=11)
-    ax.set_ylabel("Refused Prompt / Turn ID", fontsize=11)
+    ax.set_ylabel(f"{'Refused' if want_ref else 'Complied'} Prompt / Turn ID", fontsize=11)
     ax.set_xticks(range(0, L, 2))
     step = max(1, P // 35)
     ax.set_yticks(range(0, P, step))
@@ -457,11 +460,12 @@ def plot_refusal_bubbles(samples, name, save_dir):
     cb = fig.colorbar(sc, ax=ax, ticks=range(n_experts), pad=0.01)
     cb.set_label("Top-1 Expert ID", fontsize=10)
     plt.tight_layout()
-    out = os.path.join(save_dir, f"{name}_refusal_bubbles.png")
+    suffix = "refusal_bubbles" if want_ref else "complied_bubbles"
+    out = os.path.join(save_dir, f"{name}_{suffix}.png")
     plt.savefig(out, bbox_inches="tight"); plt.close()
 
     modal = [np.bincount(E[:, l]).argmax() for l in range(L)]
-    print(f"  [{name}] -> {out}")
+    print(f"  [{name}] ({which}) -> {out}")
     print(f"      modal top-1 expert by layer: "
           f"{{{', '.join(f'L{l}:E{modal[l]}' for l in range(0, L, 5))}}}")
 
@@ -469,7 +473,7 @@ def plot_refusal_bubbles(samples, name, save_dir):
 # ==========================================================================
 # 4. LOW-VARIANCE BASELINE  (per-layer dominant expert across ALL layers)
 # ==========================================================================
-def plot_low_variance_baseline(samples, name, save_dir, annotate_agreement=False):
+def plot_low_variance_baseline(samples, name, save_dir, annotate_agreement=False, which="refused"):
     """
     Per-layer refusal baseline spanning every MoE layer.
 
@@ -479,16 +483,18 @@ def plot_low_variance_baseline(samples, name, save_dir, annotate_agreement=False
       colour + label of each point : the MODAL top-1 expert at that layer
                                      (the expert most refusals routed to there)
     """
-    refused = [s for s in samples if s["refused"]]
-    if not refused:
-        print(f"  [{name}] baseline skipped (no refusals)"); return
+    want_ref = (which == "refused")
+    subset = [s for s in samples if s["refused"] == want_ref]
+    cls_label = "Refusal" if want_ref else "Complied (Jailbroken)"
+    if not subset:
+        print(f"  [{name}] {which} baseline skipped (no {which} samples)"); return
 
-    n_layers = min(s["probs"].shape[0] for s in refused)
-    n_prompts = len(refused)
+    n_layers = min(s["probs"].shape[0] for s in subset)
+    n_prompts = len(subset)
 
     top_expert = np.zeros((n_prompts, n_layers), dtype=int)    # (P, L)
     top_prob = np.zeros((n_prompts, n_layers), dtype=float)    # (P, L)
-    for i, s in enumerate(refused):
+    for i, s in enumerate(subset):
         p = s["probs"][:n_layers]                              # (L, E)
         msk = s["mask"][:n_layers] if s.get("mask") is not None else None
         de = dominant_expert_per_layer(p, msk)                 # (L,)
@@ -528,9 +534,9 @@ def plot_low_variance_baseline(samples, name, save_dir, annotate_agreement=False
                     color=cmap(norm(modal_expert[l])))
 
     ax.set_title(
-        f"Per-Layer Refusal Baseline — {name}\n"
+        f"Per-Layer {cls_label} Baseline — {name}\n"
         f"Dominant expert & global-max routing probability "
-        f"(mean \u00b1 std over {n_prompts} refusals, {n_layers} layers)",
+        f"(mean \u00b1 std over {n_prompts} {which}, {n_layers} layers)",
         fontweight="bold", fontsize=14)
     ax.set_xlabel("MoE Layer", fontsize=12)
     ax.set_ylabel("Global Max Routing Probability", fontsize=12)
@@ -542,9 +548,10 @@ def plot_low_variance_baseline(samples, name, save_dir, annotate_agreement=False
     cb.set_label("Modal Top-1 Expert ID", fontsize=10)
 
     plt.tight_layout()
-    out = os.path.join(save_dir, f"{name}_low_variance_baseline.png")
+    suffix = "low_variance_baseline" if want_ref else "complied_baseline"
+    out = os.path.join(save_dir, f"{name}_{suffix}.png")
     plt.savefig(out, bbox_inches="tight"); plt.close()
-    print(f"  [{name}] -> {out}")
+    print(f"  [{name}] ({which}) -> {out}")
 
 
 # ==========================================================================
@@ -644,8 +651,14 @@ def run_group(samples, name, save_dir, base_dir=None):
           f"{sum(s['refused'] for s in samples)} refused) ---")
     plot_pca_clusters(samples, name, save_dir)
     plot_clean_score_max_proof(samples, name, save_dir)
-    plot_refusal_bubbles(samples, name, save_dir)
-    plot_low_variance_baseline(samples, name, save_dir)
+    # Refused (SAFE) — the original two plots
+    plot_refusal_bubbles(samples, name, save_dir, which="refused")
+    plot_low_variance_baseline(samples, name, save_dir, which="refused")
+    # Complied (JAILBROKEN) — same two plots for the other class, to test whether
+    # jailbroken prompts route to different experts (hypothesis 2). Compare the
+    # _complied_ vs _refusal_/_low_variance_ PNGs side by side.
+    plot_refusal_bubbles(samples, name, save_dir, which="complied")
+    plot_low_variance_baseline(samples, name, save_dir, which="complied")
 
 
 def main(base_dir=BASE_DIR, audit=False):
