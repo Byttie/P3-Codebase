@@ -32,6 +32,19 @@ LIVE_LOG_FILE = BASE_DIR / "live_prompts.jsonl"                       # appended
 
 MAX_NEW_TOKENS = 1024
 TEST_LIMIT = 100
+
+# ---- resumable extraction ----------------------------------------------------
+# python zaya_m2s_mean.py --start 101 --limit 300
+# --start is 1-based. A prompt whose tensor already exists is skipped, so
+# re-runs append new prompts instead of recomputing.
+import argparse as _argparse
+_ap = _argparse.ArgumentParser()
+_ap.add_argument("--start", type=int, default=1)
+_ap.add_argument("--limit", type=int, default=None)
+_args, _ = _ap.parse_known_args()
+START_INDEX = max(1, _args.start)
+if _args.limit is not None:
+    TEST_LIMIT = _args.limit
 SEED = 1234
 
 ROUTING_LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -294,12 +307,19 @@ def run_dataset_benchmark():
     if CONV_COLUMN not in dataset.column_names:
         raise KeyError(f"Column {CONV_COLUMN!r} not found. Available: {dataset.column_names}")
 
-    open(LIVE_LOG_FILE, "w").close()
+    if START_INDEX <= 1:
+        open(LIVE_LOG_FILE, "w").close()
     results_log = []
 
     for row_idx, sample in enumerate(dataset):
         if row_idx >= TEST_LIMIT:
             break
+        if (row_idx + 1) < START_INDEX:
+            continue
+        _existing = ROUTING_LOG_DIR / f"prompt_{row_idx:04d}.pt"
+        if _existing.exists():
+            print(f"  [skip] prompt {row_idx + 1}: {_existing.name} exists")
+            continue
 
         user_prompt = extract_prompt(sample.get(CONV_COLUMN))
         print(f"\n{'=' * 70}\nPROMPT {row_idx + 1}/{TEST_LIMIT}")
