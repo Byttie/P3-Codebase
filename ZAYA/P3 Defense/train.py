@@ -35,6 +35,7 @@ def evaluate(model, X, Y, loss_mask, turn_mask, thr=0.5, device="cpu"):
     y = Y[m].numpy(); p = (probs[m].numpy() >= thr).astype(int)
     tp = int(((p == 1) & (y == 1)).sum()); fp = int(((p == 1) & (y == 0)).sum())
     fn = int(((p == 0) & (y == 1)).sum())
+    tn = int(((p == 0) & (y == 0)).sum())
     prec = tp / (tp + fp) if tp + fp else 0.0
     rec = tp / (tp + fn) if tp + fn else 0.0
     f1 = 2 * prec * rec / (prec + rec) if prec + rec else 0.0
@@ -49,7 +50,39 @@ def evaluate(model, X, Y, loss_mask, turn_mask, thr=0.5, device="cpu"):
         if cr.numel():
             mttd += float(cr[0].item() + 1); n += 1
     return dict(F1=round(f1, 3), precision=round(prec, 3), recall=round(rec, 3),
-                tp=tp, fp=fp, fn=fn, MTTD=(round(mttd / n, 2) if n else float("nan")))
+                tp=tp, fp=fp, fn=fn, tn=tn, MTTD=(round(mttd / n, 2) if n else float("nan")))
+
+
+def save_confusion_matrix(metrics, out_path="confusion_matrix_val.png"):
+    """Draw a 2x2 confusion matrix from the best-epoch validation counts.
+    Rows = actual, Cols = predicted. Positive class = 1 = attack/complied."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    import numpy as np
+    tp, fp, fn, tn = metrics["tp"], metrics["fp"], metrics["fn"], metrics.get("tn", 0)
+    # layout: [[TN, FP], [FN, TP]] with actual on rows (0=refused/safe,1=attack)
+    cm = np.array([[tn, fp], [fn, tp]])
+    fig, ax = plt.subplots(figsize=(5.5, 5))
+    im = ax.imshow(cm, cmap="Blues")
+    labels = ["Refused / Safe (0)", "Complied / Attack (1)"]
+    ax.set_xticks([0, 1]); ax.set_yticks([0, 1])
+    ax.set_xticklabels(labels, fontsize=9); ax.set_yticklabels(labels, fontsize=9, rotation=90, va="center")
+    ax.set_xlabel("Predicted", fontweight="bold"); ax.set_ylabel("Actual", fontweight="bold")
+    total = cm.sum()
+    for i in range(2):
+        for j in range(2):
+            v = cm[i, j]
+            pct = (v / total * 100) if total else 0
+            ax.text(j, i, f"{v}\n({pct:.1f}%)", ha="center", va="center",
+                    fontsize=14, fontweight="bold",
+                    color="white" if v > cm.max() * 0.5 else "black")
+    f1 = metrics.get("F1", 0); prec = metrics.get("precision", 0); rec = metrics.get("recall", 0)
+    ax.set_title(f"Validation Confusion Matrix\nF1={f1}  Precision={prec}  Recall={rec}",
+                 fontweight="bold", fontsize=12, pad=12)
+    plt.tight_layout()
+    plt.savefig(out_path, bbox_inches="tight", dpi=150); plt.close()
+    print(f"  [confusion matrix] TN={tn} FP={fp} FN={fn} TP={tp} -> {out_path}")
 
 
 def run_training(packed, epochs=40, lr=1e-3, wd=1e-4, batch=32, gamma=2.0,
@@ -92,6 +125,8 @@ def run_training(packed, epochs=40, lr=1e-3, wd=1e-4, batch=32, gamma=2.0,
         if verbose and (ep % 10 == 0 or ep == 1):
             print(f"  ep {ep:3d}  val F1 {val['F1']:.3f} R {val['recall']:.3f} "
                   f"P {val['precision']:.3f} MTTD {val['MTTD']}")
+    if best_metrics is not None:
+        save_confusion_matrix(best_metrics)
     return dict(state_dict=best_state, in_dim=dim, scaler_mu=mu, scaler_sigma=sigma,
                 append_zscore=append_zscore, mode=packed.get("mode"),
                 feature_config=packed.get("feature_config"), val_metrics=best_metrics)
