@@ -8,7 +8,7 @@ import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from datasets import load_dataset
 
-KMAX = 10   # keep the top-K token weights per (layer, expert); any K<=KMAX is a
+KMAX = 30   # keep the top-K token weights per (layer, expert); any K<=KMAX is a
             # feature-build knob later. Adds ONE payload key: 'topk_token_probs'.
 
 
@@ -57,7 +57,20 @@ LIVE_LOG_FILE = BASE_DIR / "live_turns.jsonl"                         # appended
 
 MAX_TURNS = 5              # ceiling only; a row with fewer prompts just ends early
 MAX_NEW_TOKENS = 512
-TEST_LIMIT = 100
+TEST_LIMIT = 300
+
+# ---- resumable extraction ----------------------------------------------------
+# python zaya_multi_turn_topk.py --start 16 --limit 300
+# --start is 1-based. A conversation whose first-turn tensor already exists is
+# skipped, so a re-run continues instead of restarting from conversation 1.
+import argparse as _argparse
+_ap = _argparse.ArgumentParser()
+_ap.add_argument("--start", type=int, default=1)
+_ap.add_argument("--limit", type=int, default=None)
+_args, _ = _ap.parse_known_args()
+START_INDEX = max(1, _args.start)
+if _args.limit is not None:
+    TEST_LIMIT = _args.limit
 SEED = 1234
 
 ROUTING_LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -375,12 +388,19 @@ def run_dataset_benchmark():
             f"Column {CONV_COLUMN!r} not found. Available: {dataset.column_names}"
         )
 
-    open(LIVE_LOG_FILE, "w").close()
+    if START_INDEX <= 1:
+        open(LIVE_LOG_FILE, "w").close()
     results_log = []
 
     for conv_idx, sample in enumerate(dataset):
         if conv_idx >= TEST_LIMIT:
             break
+        if (conv_idx + 1) < START_INDEX:
+            continue
+        _existing = ROUTING_LOG_DIR / f"conv_{conv_idx:04d}_turn_01.pt"
+        if _existing.exists():
+            print(f"  [skip] conversation {conv_idx + 1}: {_existing.name} exists")
+            continue
 
         messages = parse_conversation(sample.get(CONV_COLUMN))
 
