@@ -66,12 +66,14 @@ class TurnEncoder(nn.Module):
 
 
 class RoutingGuard(nn.Module):
-    def __init__(self, in_dim, enc_dim=128, gru_hidden=128, proj_dim=64, p=0.1):
+    def __init__(self, in_dim, enc_dim=128, gru_hidden=128, proj_dim=64, p=0.1, num_layers=1):
         super().__init__()
         self.in_dim = in_dim
         self.gru_hidden = gru_hidden
+        self.num_layers = num_layers
         self.encoder = TurnEncoder(in_dim, out_dim=enc_dim, p=p)
-        self.gru = nn.GRU(enc_dim, gru_hidden, batch_first=True)
+        self.gru = nn.GRU(enc_dim, gru_hidden, num_layers=num_layers,
+                          batch_first=True, dropout=(p if num_layers > 1 else 0.0))
         self.proj = nn.Linear(gru_hidden, proj_dim)
         self.head = nn.Sequential(nn.GELU(), nn.Linear(proj_dim + enc_dim, 1))
         self.short_circuit = nn.Linear(enc_dim, 1)   # 1-shot detector off e_t
