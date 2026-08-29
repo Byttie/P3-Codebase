@@ -36,8 +36,6 @@ N_LAYERS = 40
 
 # family -> (tensor-dir globs to try, refusals-json candidates, id kind)
 FAMILIES = {
-    "m2s-pythonize_topk": dict(kind="m2s",
-        refus=["m2s_pythonize_refusals.json", "single_prompt_refusals.json"]),
     "multi-turn_topk": dict(kind="multi",
         refus=["multi_turn_refusals.json", "flagged_refusals.json"]),
 }

@@ -8,7 +8,7 @@ Semantics (per the dataset definition):
   The *_refusals.json files list the SAFE (refused) items. Every other tensor
   found on disk is treated as COMPLIED (jailbroken).
 
-For EACH of the four groups  ->  m2s-hyphenize, m2s-numberize, m2s-pythonize, multiturn
+For the multi-turn group.
 produce the SAME four plots:
 
   1. pca_clusters          PCA of routing tensors, refused (safe) vs complied (jailbroken)
@@ -54,11 +54,6 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))   # this script's folder, 
 
 # Folder names match your tree structure: each family has a *_mean dir holding the
 # mean-pooled tensors under moe_routing_tensors/. We visualise the MEAN tensors.
-SINGLE_TURN = {
-    "m2s-hyphenize_mean": "m2s_hyphenize_refusals.json",
-    "m2s-numberize_mean": "m2s_numberize_refusals.json",
-    "m2s-pythonize_mean": "m2s_pythonize_refusals.json",
-}
 MULTI_TURN_DIR = "multi-turn_mean"
 MULTI_TURN_REFUSALS = "multi_turn_refusals.json"
 
@@ -149,7 +144,7 @@ def _resolve_family_dir(base_dir, cat):
     if os.path.isdir(direct):
         return direct
     
-    # Check nested under parent family directory (e.g. m2s-pythonize/m2s-pythonize_mean)
+    # Check nested under parent family directory (e.g. multi-turn/multi-turn_mean)
     prefix = cat.replace("_mean", "").replace("_topk", "")
     nested = os.path.join(base_dir, prefix, cat)
     if os.path.isdir(nested):
@@ -177,22 +172,6 @@ def _find_json(base_dir, cat, filename):
         if os.path.exists(c):
             return c
     return None
-
-
-def load_single_turn_refusals(base_dir):
-    out = {}
-    for cat, fname in SINGLE_TURN.items():
-        path = _find_json(base_dir, cat, fname)
-        ids = []
-        if path:
-            for row in json.load(open(path, encoding="utf-8")):
-                if isinstance(row, dict) and "prompt_id" in row:
-                    ids.append(int(row["prompt_id"]))
-                elif isinstance(row, (int, str)):
-                    ids.append(int(row))
-        out[cat] = sorted(set(ids))
-        print(f"  {cat:<14} refused prompts: {len(out[cat])}")
-    return out
 
 
 def _find_multi_turn_json(base_dir):
@@ -240,29 +219,6 @@ def _diagnose_missing(base_dir, cat):
     return
 
 
-def load_single_turn_samples(base_dir, cat, refused_ids):
-    """Load ALL available prompt tensors; label refusals from the JSON ids.
-
-    refused=True comes from *_refusals.json (SAFE); every other tensor found on
-    disk is COMPLIED (jailbroken). PCA uses both classes; the per-layer baseline
-    and refusal bubbles filter to refusals only.
-    """
-    tdir = _resolve_tensor_dir(base_dir, cat)
-    refused_set = set(refused_ids)
-    samples = []
-    for i in range(NUM_PROMPTS):
-        fp = os.path.join(tdir, f"prompt_{i:04d}.pt")
-        if not os.path.exists(fp):
-            continue
-        probs, mask = probs_and_mask(load_payload(fp))
-        samples.append({"label": i, "probs": probs, "mask": mask,
-                        "refused": i in refused_set})
-    n_ref = sum(s["refused"] for s in samples)
-    print(f"  [{cat}] loaded {len(samples)} tensors "
-          f"({n_ref} refused/safe, {len(samples) - n_ref} complied/jailbroken)")
-    return samples
-
-
 def load_multi_turn_samples(base_dir, refusals):
     """Load ALL available (conv,turn) tensors; label refusals from the JSON pairs.
 
@@ -272,14 +228,18 @@ def load_multi_turn_samples(base_dir, refusals):
     """
     tdir = _resolve_tensor_dir(base_dir, MULTI_TURN_DIR)
     samples = []
-    for c in range(NUM_CONVS):
-        for t in range(1, NUM_TURNS + 1):
-            fp = os.path.join(tdir, f"conv_{c:04d}_turn_{t:02d}.pt")
-            if not os.path.exists(fp):
-                continue
-            probs, mask = probs_and_mask(load_payload(fp))
-            samples.append({"label": f"c{c}t{t}", "probs": probs, "mask": mask,
-                            "refused": (c, t) in refusals, "conv": c, "turn": t})
+    # scan ALL conv tensors present on disk (not a fixed range) so the EDA
+    # matches the actual dataset size, whatever it is.
+    import glob as _glob, re as _re
+    files = sorted(_glob.glob(os.path.join(tdir, "conv_*_turn_*.pt")))
+    for fp in files:
+        m = _re.search(r"conv_(\d+)_turn_(\d+)\.pt", os.path.basename(fp))
+        if not m:
+            continue
+        c, t = int(m.group(1)), int(m.group(2))
+        probs, mask = probs_and_mask(load_payload(fp))
+        samples.append({"label": f"c{c}t{t}", "probs": probs, "mask": mask,
+                        "refused": (c, t) in refusals, "conv": c, "turn": t})
     n_ref = sum(s["refused"] for s in samples)
     print(f"  [multiturn] loaded {len(samples)} tensors "
           f"({n_ref} refused/safe, {len(samples) - n_ref} complied/jailbroken)")
@@ -317,11 +277,9 @@ def _looks_refused(resp):
 def audit_refusal_labels(base_dir):
     """Print refused-labelled items whose model_response does NOT look like a refusal."""
     print("\n=== Label audit (heuristic — manual review recommended) ===")
-    files = dict(SINGLE_TURN)
-    files["multi-turn"] = MULTI_TURN_REFUSALS
+    files = {"multi-turn": MULTI_TURN_REFUSALS}
     for cat, fname in files.items():
-        path = _find_json(base_dir, cat, fname) if cat != "multi-turn" \
-            else _find_multi_turn_json(base_dir)
+        path = _find_multi_turn_json(base_dir)
         if not path:
             print(f"  [{cat}] JSON not found; skipped")
             continue
@@ -567,10 +525,14 @@ def _ribbon(ax, x0, x1, y0a, y0b, y1a, y1b, color, alpha=0.85):
                                     edgecolor="none", alpha=alpha))
 
 
-def plot_multiturn_refusal_funnel(refusal_pairs, save_dir, n_convs=NUM_CONVS,
+def plot_multiturn_refusal_funnel(refusal_pairs, save_dir, n_convs=None,
                                   n_turns=NUM_TURNS):
-    """Refusal-attrition funnel, consistent with the per-conversation ASR."""
+    """Refusal-attrition funnel, consistent with the per-conversation ASR.
+    n_convs MUST be the true total number of conversations in the dataset
+    (refused + complied), since refusal_pairs only lists the refused ones."""
     from collections import Counter
+    if n_convs is None:
+        raise ValueError("plot_multiturn_refusal_funnel needs n_convs = total conversations")
     refused_at = Counter(t for (_c, t) in refusal_pairs)
     total_refused = len(set(c for (c, _t) in refusal_pairs))
     surviving = [n_convs]
@@ -666,17 +628,18 @@ def main(base_dir=BASE_DIR, audit=False):
     os.makedirs(vis, exist_ok=True)
 
     print("=== Refusal labels ===")
-    single_ref = load_single_turn_refusals(base_dir)
     mt_pairs = load_multi_turn_refusals(base_dir)
 
     if audit:
         audit_refusal_labels(base_dir)
 
-    for cat, ids in single_ref.items():
-        run_group(load_single_turn_samples(base_dir, cat, ids), cat, vis, base_dir)
-
-    # ASR-consistent multi-turn summary (derived directly from the refusal JSON)
-    plot_multiturn_refusal_funnel(mt_pairs, vis)
+    # ASR-consistent multi-turn summary — total conversations derived from
+    # the tensors actually present on disk (NOT a hardcoded constant).
+    mt_samples_for_count = load_multi_turn_samples(base_dir, mt_pairs)
+    total_convs = len(set(s['conv'] for s in mt_samples_for_count)) \
+        if mt_samples_for_count and 'conv' in mt_samples_for_count[0] \
+        else len(mt_samples_for_count)
+    plot_multiturn_refusal_funnel(mt_pairs, vis, n_convs=total_convs)
     # per-refusal routing plots for any multi-turn tensors that exist on disk:
     run_group(load_multi_turn_samples(base_dir, mt_pairs), MULTI_TURN_DIR, vis, base_dir)
 
