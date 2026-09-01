@@ -1,0 +1,42 @@
+[
+    {
+        "conversation_id": 8,
+        "turn_id": 2,
+        "refusal_phrase": "I can't provide"
+    },
+    {
+        "conversation_id": 9,
+        "turn_id": 2,
+        "refusal_phrase": "I am not able to assist"
+    },
+    {
+        "conversation_id": 10,
+        "turn_id": 3,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 15,
+        "turn_id": 2,
+        "refusal_phrase": "I can't provide"
+    },
+    {
+        "conversation_id": 19,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 30,
+        "turn_id": 1,
+        "refusal_phrase": "I'm not able to assist"
+    },
+    {
+        "conversation_id": 38,
+        "turn_id": 1,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 49,
+        "turn_id": 2,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    }
+]

@@ -86,16 +86,21 @@ def save_confusion_matrix(metrics, out_path="confusion_matrix_val.png"):
 
 
 def run_training(packed, epochs=40, lr=1e-3, wd=1e-4, batch=32, gamma=2.0,
-                 val_frac=0.2, seed=1234, append_zscore=False,
+                 val_frac=0.2, seed=1234, append_zscore=False, use_zscore=True,
                  device="cuda" if torch.cuda.is_available() else "cpu", verbose=True):
     torch.manual_seed(seed); np.random.seed(seed)
     X, Y, LOSS, W, TM, G = (packed["X"], packed["Y"], packed["loss_mask"],
                             packed["weight"], packed["turn_mask"], packed["group"])
     tr, va = grouped_split(G, val_frac, seed)
 
-    # GLOBAL Z-SCORE: fit on train turns only
-    mu, sigma = zscore.fit(X[tr][TM[tr]])
-    Xs = zscore.transform(X, mu, sigma) * TM.unsqueeze(-1)
+    # GLOBAL Z-SCORE: fit on train turns only (skipped if use_zscore=False)
+    if use_zscore:
+        mu, sigma = zscore.fit(X[tr][TM[tr]])
+        Xs = zscore.transform(X, mu, sigma) * TM.unsqueeze(-1)
+    else:
+        # no standardization — raw routing features (matches z-off winning config)
+        mu, sigma = zscore.fit(X[tr][TM[tr]])  # still stored for reference, not applied
+        Xs = X * TM.unsqueeze(-1)
 
     if append_zscore:
         score = zscore.anomaly_score(X, mu, sigma).unsqueeze(-1)   # (N,T,1)
@@ -137,11 +142,14 @@ def main():
     ap.add_argument("--data", default="dataset.pt")
     ap.add_argument("--epochs", type=int, default=40)
     ap.add_argument("--append_zscore", action="store_true")
+    ap.add_argument("--no_zscore", action="store_true",
+                    help="train WITHOUT z-score standardization (matches z-off config)")
     ap.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     ap.add_argument("--out", default="routing_guard.pt")
     a = ap.parse_args()
     packed = torch.load(a.data, weights_only=False)
-    res = run_training(packed, epochs=a.epochs, append_zscore=a.append_zscore, device=a.device)
+    res = run_training(packed, epochs=a.epochs, append_zscore=a.append_zscore,
+                       use_zscore=(not a.no_zscore), device=a.device)
     print("[best val]", res["val_metrics"])
     torch.save(res, a.out); print(f"[train] saved -> {a.out}")
 
