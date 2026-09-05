@@ -67,8 +67,8 @@ LIVE_LOG_FILE = BASE_DIR / "live_turns.jsonl"                         # appended
 
 MAX_TURNS = 5              # ceiling only; a row with fewer prompts just ends early
 MAX_NEW_TOKENS = 1024
-# if a turn truncates (hits cap with no </think>), retry at these escalating budgets:
-RETRY_BUDGETS = [2048, 4096]   # tried in order; [] disables auto-retry
+# retry logic removed: on truncation we SKIP the whole conversation (faster).
+RETRY_BUDGETS = []   # kept for compatibility; no longer used
 
 # tracks turns that hit the token cap without closing </think> (still truncated)
 _TRUNCATED_TURNS = []
@@ -387,6 +387,30 @@ def append_live(record):
         os.fsync(f.fileno())
 
 
+def remove_conv_from_live(conv_id):
+    """Strip all lines for a given conversation_id from live_turns.jsonl.
+    Used when a conversation is skipped mid-way (some turns may already be written)."""
+    if not LIVE_LOG_FILE.exists():
+        return
+    kept = []
+    with open(LIVE_LOG_FILE, "r", encoding="utf-8") as f:
+        for line in f:
+            line_s = line.strip()
+            if not line_s:
+                continue
+            try:
+                rec = json.loads(line_s)
+            except json.JSONDecodeError:
+                kept.append(line)
+                continue
+            if rec.get("conversation_id") != conv_id:
+                kept.append(line)
+    with open(LIVE_LOG_FILE, "w", encoding="utf-8") as f:
+        f.writelines(kept)
+        f.flush()
+        os.fsync(f.fileno())
+
+
 # ==========================================
 # PHASE 5: EVALUATION LOOP
 # ==========================================
@@ -486,70 +510,61 @@ def run_dataset_benchmark():
             print(f"\n--- TURN {turn_idx + 1}/{len(user_turns)} | prompt_len={prompt_len} ---")
             print(f"USER : {user_prompt[:300]}")
 
-            # --- generate with automatic escalation on truncation ---
-            budgets = [MAX_NEW_TOKENS] + [b for b in RETRY_BUDGETS if b > MAX_NEW_TOKENS]
-            response_text = ""
-            new_ids = None
-            tensor_file = routing_meta = None
-            used_budget = MAX_NEW_TOKENS
-            for attempt, budget in enumerate(budgets):
-                # context guard for this budget
-                if prompt_len + budget >= MAX_CTX:
-                    print(f"  (budget {budget} would exceed context {MAX_CTX}; "
-                          f"stopping escalation)")
-                    break
-                logit_capture.clear()
-                with torch.no_grad():
-                    outputs = model.generate(
-                        **inputs,
-                        max_new_tokens=budget,
-                        do_sample=True,
-                        temperature=0.7,
-                        top_k=50,
-                        top_p=0.95,
-                        eos_token_id=terminators,
-                        pad_token_id=pad_id,
-                    )
-                new_ids = outputs[0][prompt_len:]
-                response_text = tokenizer.decode(new_ids, skip_special_tokens=True).strip()
-                used_budget = budget
-                gen_len = int(new_ids.shape[0])
-                truncated_now = (gen_len >= budget - 1) and ("</think>" not in response_text)
-                if not truncated_now:
-                    # extract from THIS (successful) generation's captured logits
-                    tensor_file, routing_meta = extract_and_pool_routing(
-                        prompt_len, conv_idx, turn_idx + 1)
-                    logit_capture.clear()
-                    if attempt > 0:
-                        print(f"  [retry OK] closed </think> at budget {budget} "
-                              f"({gen_len} tokens)")
-                    break
-                # truncated at this budget -> escalate if there is a larger one
-                if attempt < len(budgets) - 1:
-                    print(f"  !! truncated at {gen_len}/{budget} tokens (no </think>) "
-                          f"-- retrying at {budgets[attempt + 1]}")
-                else:
-                    # exhausted all budgets: accept the truncated result, extract, flag
-                    tensor_file, routing_meta = extract_and_pool_routing(
-                        prompt_len, conv_idx, turn_idx + 1)
-                    logit_capture.clear()
-                    print(f"  !! STILL truncated after max budget {budget} "
-                          f"-- conv {conv_idx} turn {turn_idx + 1} accepted as-is")
+            # --- single-shot generation at MAX_NEW_TOKENS (no retry) ---
+            logit_capture.clear()
+            with torch.no_grad():
+                outputs = model.generate(
+                    **inputs,
+                    max_new_tokens=MAX_NEW_TOKENS,
+                    do_sample=True,
+                    temperature=0.7,
+                    top_k=50,
+                    top_p=0.95,
+                    eos_token_id=terminators,
+                    pad_token_id=pad_id,
+                )
+            new_ids = outputs[0][prompt_len:]
+            response_text = tokenizer.decode(new_ids, skip_special_tokens=True).strip()
+            gen_len = int(new_ids.shape[0])
+            is_truncated = (gen_len >= MAX_NEW_TOKENS - 1) and ("</think>" not in response_text)
 
             print(f"MODEL: {response_text[:300]}")
+
+            # --- SKIP the whole conversation on truncation ---
+            # A truncated turn means this conversation is unusable. Do NOT save its
+            # tensor, do NOT keep any partial turns; abandon it and move on. This
+            # saves the compute that escalating retries would have burned.
+            if is_truncated:
+                logit_capture.clear()
+                _TRUNCATED_TURNS.append((conv_idx, turn_idx + 1, gen_len))
+                print(f"  !! TRUNCATED at {gen_len}/{MAX_NEW_TOKENS} (no </think>) "
+                      f"-- SKIPPING conversation {conv_idx} entirely.")
+                # (a) remove any tensor files already written for earlier turns
+                for _prev_t in range(1, turn_idx + 1):
+                    for _d in (MEAN_LOG_DIR, TOPK_LOG_DIR):
+                        _f = _d / f"conv_{conv_idx:04d}_turn_{_prev_t:02d}.pt"
+                        if _f.exists():
+                            _f.unlink()
+                # (b) remove this conversation from the benchmark JSON
+                if record in results_log:
+                    results_log.remove(record)
+                    flush_results(results_log)
+                # (c) remove any of this conversation's turns already in live_turns.jsonl
+                remove_conv_from_live(conv_idx)
+                record = None                 # mark as dropped
+                break                          # abandon this conversation, go to next
+
             if not response_text:
                 print("  !! EMPTY GENERATION — check the chat template / terminators.")
 
+            # extract routing from this (complete) generation
+            tensor_file, routing_meta = extract_and_pool_routing(
+                prompt_len, conv_idx, turn_idx + 1)
+            logit_capture.clear()
+
             # Feed the model's OWN reply back so turn N+1 is correctly conditioned.
-            # An empty assistant message would corrupt the template, so skip it.
             if response_text:
                 history.append({"role": "assistant", "content": response_text})
-
-            gen_len = int(new_ids.shape[0])
-            # after escalation: truncated only if STILL no </think> at the largest budget used
-            is_truncated = (gen_len >= used_budget - 1) and ("</think>" not in response_text)
-            if is_truncated:
-                _TRUNCATED_TURNS.append((conv_idx, turn_idx + 1, gen_len))
 
             turn_record = {
                 "turn_id": turn_idx + 1,
@@ -557,7 +572,7 @@ def run_dataset_benchmark():
                 "model_response": response_text,
                 "prompt_token_len": prompt_len,
                 "generated_token_len": gen_len,
-                "max_new_tokens_used": used_budget,
+                "max_new_tokens_used": MAX_NEW_TOKENS,
                 "truncated": is_truncated,
                 "raw_prompt_fed_to_model": prompt_text,
                 **routing_meta,
@@ -570,23 +585,24 @@ def run_dataset_benchmark():
 
             print(f"  saved -> {tensor_file}")
 
-        if record["status"] == "running":
-            record["status"] = "complete"
-        record["final_history"] = history
-        flush_results(results_log)
+        if record is not None:
+            if record["status"] == "running":
+                record["status"] = "complete"
+            record["final_history"] = history
+            flush_results(results_log)
 
     # --- truncation summary ---
     if _TRUNCATED_TURNS:
         trunc_convs = sorted(set(c for c, t, g in _TRUNCATED_TURNS))
         print("\n" + "=" * 60)
-        print(f"WARNING: {len(_TRUNCATED_TURNS)} turns STILL truncated at "
+        print(f"SKIPPED {len(trunc_convs)} conversations due to truncation at "
               f"MAX_NEW_TOKENS={MAX_NEW_TOKENS}")
-        print(f"  affected conversations ({len(trunc_convs)}): {trunc_convs}")
-        print(f"  -> re-run just these at a higher budget, e.g.:")
-        print(f"     (raise MAX_NEW_TOKENS to 2048 and use --ids {','.join(map(str, trunc_convs))})")
+        print(f"  skipped conversation ids: {trunc_convs}")
+        print(f"  (their tensors were not saved / were removed — they are simply")
+        print(f"   absent from the dataset, which build_dataset.py handles via globbing)")
         print("=" * 60)
     else:
-        print(f"\n[OK] No truncation at MAX_NEW_TOKENS={MAX_NEW_TOKENS} — all responses closed </think>.")
+        print(f"\n[OK] No truncation at MAX_NEW_TOKENS={MAX_NEW_TOKENS} — all conversations kept.")
     print(f"\nComplete.\n  Full results : {OUTPUT_RESULTS_FILE}\n  Live stream  : {LIVE_LOG_FILE}")
 
 
