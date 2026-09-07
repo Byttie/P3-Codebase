@@ -36,6 +36,22 @@ from model import RoutingGuard
 from train import focal_bce_with_logits, evaluate
 from build_dataset import assemble
 from routing_features import FeatureConfig
+import json as _json
+
+def _filter_to_groups(packed, keep_groups):
+    """Keep only rows whose group id is in keep_groups (dev-only CV)."""
+    if keep_groups is None:
+        return packed
+    keep = set(int(g) for g in keep_groups)
+    g = packed['group'].tolist()
+    idx = [i for i, gg in enumerate(g) if int(gg) in keep]
+    sel = torch.as_tensor(idx)
+    out = dict(packed)
+    for k in ('X','Y','loss_mask','weight','turn_mask','group'):
+        out[k] = packed[k][sel]
+    if 'source' in packed:
+        out['source'] = [packed['source'][i] for i in idx]
+    return out
 
 try:
     from sklearn.model_selection import StratifiedGroupKFold
@@ -113,10 +129,17 @@ def main():
     ap.add_argument("--gamma", type=float, default=2.0)
     ap.add_argument("--seed", type=int, default=1234)
     ap.add_argument("--out_csv", default="experiment_results.csv")
+    ap.add_argument("--dev_groups", default=None,
+                    help="holdout_groups.json — restrict CV to dev conversations "
+                         "only (keeps the held-out test set out of the experiment)")
     ap.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     a = ap.parse_args()
 
     fam = tuple(a.families)
+    dev_groups = None
+    if a.dev_groups:
+        dev_groups = _json.load(open(a.dev_groups))['dev_groups']
+        print(f'[dev-only] restricting CV to {len(dev_groups)} dev conversations (held-out test excluded)')
     results = []  # (pooling, K, zscore, f1_mean, f1_std, prec, rec)
 
     print("=" * 72)
@@ -130,6 +153,7 @@ def main():
     # ---- MEAN pooling (2 cells) ----
     packed_mean = assemble(a.root, a.refusal_dir, a.mode,
                            FeatureConfig(local_pool="mean"), fam)
+    packed_mean = _filter_to_groups(packed_mean, dev_groups)
     for zs in (True, False):
         m, s, p, r = cv_evaluate(packed_mean, zs, a.folds, a.epochs, a.lr, a.wd,
                                  a.batch, a.gamma, a.seed, a.device)
@@ -141,6 +165,7 @@ def main():
     for K in range(1, a.Kmax + 1):
         packed_topk = assemble(a.root, a.refusal_dir, a.mode,
                                FeatureConfig(local_pool="topk", K=K), fam)
+        packed_topk = _filter_to_groups(packed_topk, dev_groups)
         for zs in (True, False):
             m, s, p, r = cv_evaluate(packed_topk, zs, a.folds, a.epochs, a.lr, a.wd,
                                      a.batch, a.gamma, a.seed, a.device)

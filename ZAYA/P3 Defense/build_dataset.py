@@ -1,26 +1,28 @@
 """
-build_dataset.py  (v3 — layout-aware)
--------------------------------------
-Assemble a unified training set from the tensors your ZAYA extraction wrote.
+build_dataset.py  (v4 — Malicious/Benign layout, T1-compliance labeling)
+------------------------------------------------------------------------
+Assemble a T1 training set for harmful-compliance vs benign-compliance.
 
-What changed in v3 (consistency with the real folder layout):
-  * `--root` is now the PROJECT root (e.g. "E:/P3 Defense"), not a single
-    tensor dir. Under it the code expects the layout you actually have:
+NEW on-disk layout (--root is the PROJECT root, e.g. "E:/P3 Defense"):
 
-        <root>/mean_pool_tensors/<family>/moe_routing_tensors/*.pt
-        <root>/topk_pool_tensors/<family>/moe_routing_tensors/*.pt
-        <root>/refusals/*.json
+    <root>/Malicious_Tensors/multi-turn_mean/moe_routing_tensors/conv_*.pt
+    <root>/Malicious_Tensors/multi-turn_topk/moe_routing_tensors/conv_*.pt
+    <root>/Benign_Tensors/multi-turn_mean/moe_routing_tensors/conv_*.pt
+    <root>/Benign_Tensors/multi-turn_topk/moe_routing_tensors/conv_*.pt
+    <root>/refusals/multi_turn_refusals.json      (MALICIOUS refusals to DROP)
 
-    Family folders use the on-disk names ("m2s-pythonize", "multi-turn").
-  * The pooling MODE picks the root: `--local_pool mean` reads mean_pool_tensors,
-    `--local_pool topk` (and max == topk K=1) reads topk_pool_tensors. A top-K
-    extraction also stores pooled_probs, so if the preferred root is missing a
-    family the resolver falls back to the other root and says so once.
+LABELS (T1-compliance, source-based):
+    * malicious conversation NOT in the refusal JSON  -> label 1  (harmful compliance)
+    * malicious conversation     in the refusal JSON  -> DROPPED  (regex handles refusals)
+    * every benign conversation                       -> label 0  (benign compliance)
 
-Everything downstream (labels, padding, grouping) is unchanged. Still supports:
-  * --families to restrict to a subset (e.g. pythonize + multiturn only)
-  * local pooling choice (--local_pool mean|topk, --K) via FeatureConfig
-  * exposes assemble(...) so a K-sweep can build in-process.
+Pooling (--local_pool mean|topk, --K) selects the *_mean or *_topk subfolder.
+
+Malicious and benign both use conv_XXXX ids starting at 0, so they would collide.
+We keep them apart with a group offset: benign groups get +BENIGN_GROUP_OFFSET,
+so grouped CV never mixes a malicious and benign conversation into one group.
+
+exposes assemble(...) so the CV / experiment scripts can build in-process.
 """
 
 import json, re, argparse
@@ -29,115 +31,55 @@ import torch
 
 from routing_features import FeatureConfig, payload_to_vector
 
-M2S_VARIANTS = ["pythonize", "hyphenize", "numberize"]
-BENIGN_GROUP_OFFSET = 100000
+BENIGN_GROUP_OFFSET = 1_000_000     # benign conv ids offset so they never collide with malicious
 
 # ---------------------------------------------------------------------------
-# On-disk layout.  Edit these three maps if your folder names differ.
+# On-disk layout.  Edit these if your folder names differ.
 # ---------------------------------------------------------------------------
-POOL_DIRNAME = {"mean": "mean_pool_tensors", "topk": "topk_pool_tensors"}
-FAMILY_DIRNAME = {
-    "pythonize": "m2s-pythonize",
-    "hyphenize": "m2s-hyphenize",
-    "numberize": "m2s-numberize",
-    "multiturn": "multi-turn",
-    "benign":    "benign",
-}
-TENSOR_SUBDIR = "moe_routing_tensors"     # extractors write .pt here; "" also accepted
-
-_FALLBACK_NOTED = set()
+MALICIOUS_DIR = "Malicious_Tensors"
+BENIGN_DIR = "Benign_Tensors"
+POOL_SUBDIR = {"mean": "multi-turn_mean", "topk": "multi-turn_topk"}
+TENSOR_SUBDIR = "moe_routing_tensors"
+MALICIOUS_REFUSALS = "multi_turn_refusals.json"
 
 
-def _has_tensors(d):
-    return d.is_dir() and (any(d.glob("prompt_*.pt")) or any(d.glob("conv_*_turn_*.pt")))
+def _tensor_dir(root, top_level, pool):
+    """root/<Malicious|Benign>_Tensors/multi-turn_<pool>/moe_routing_tensors"""
+    return Path(root) / top_level / POOL_SUBDIR[pool] / TENSOR_SUBDIR
 
 
-def resolve_tensor_dir(project_root, pool, family):
-    """Return the directory that actually holds this family's .pt files.
-
-    pool='mean' prefers mean_pool_tensors; 'topk' prefers topk_pool_tensors.
-    The .pt may sit directly in the family folder or under moe_routing_tensors/.
-
-    The fallback across roots is ASYMMETRIC on purpose:
-      * 'mean' MAY borrow the top-K root — top-K files also carry pooled_probs,
-        so reading mean from them is information-preserving.
-      * 'topk' must NEVER borrow the mean root — mean files dropped the token
-        axis, so there is nothing to top-K. We instead return the (empty)
-        top-K path so the caller raises a clear "run the top-K extraction" error
-        rather than silently degrading to mean and looking like a real top-K run.
-    A one-time notice is printed whenever a fallback is taken.
-    """
-    project_root = Path(project_root)
-    fam = FAMILY_DIRNAME.get(family, family)
-    pref = "topk" if pool == "topk" else "mean"
-    order = [pref] if pool == "topk" else [pref, "topk"]
-    for p in order:
-        for base in (project_root / POOL_DIRNAME[p] / fam / TENSOR_SUBDIR,
-                     project_root / POOL_DIRNAME[p] / fam):
-            if _has_tensors(base):
-                if p != pref and (pool, family) not in _FALLBACK_NOTED:
-                    print(f"[build] {family}: no tensors under {POOL_DIRNAME[pref]}/, "
-                          f"using {POOL_DIRNAME[p]}/ instead.")
-                    _FALLBACK_NOTED.add((pool, family))
-                return base
-    # nothing found -> hand back the preferred nested path so errors name it
-    return project_root / POOL_DIRNAME[pref] / fam / TENSOR_SUBDIR
-
-
-def load_m2s_refusals(p):
-    return {int(r["prompt_id"]) for r in json.load(open(p))}
-
-
-def load_multi_refusals(p):
-    out = {}
-    for r in json.load(open(p)):
-        c, t = int(r["conversation_id"]), int(r["turn_id"])
-        out[c] = min(t, out.get(c, 99))
-    return out
+def load_refused_ids(path):
+    """Set of malicious conversation_ids to DROP (ZAYA refused these)."""
+    if not Path(path).exists():
+        print(f"[build] WARNING: refusal file not found: {path} (dropping nothing)")
+        return set()
+    return {int(r["conversation_id"]) for r in json.load(open(path, encoding="utf-8"))}
 
 
 def _vec(path, cfg):
     return payload_to_vector(torch.load(path, map_location="cpu", weights_only=False), cfg)
 
 
-def _turn_label(mode, is_attack, complied, turn_idx, n_turns, refusal_turn):
-    last = turn_idx == n_turns
-    if not is_attack:
-        return 0.0, True, False
-    if mode == "T1":
-        return 1.0, True, complied
-    if mode == "T2":
-        return (1.0 if complied else 0.0), last, False
-    if mode == "T3":
-        if refusal_turn is None:
-            return 0.0, True, False
-        return (1.0 if turn_idx >= refusal_turn else 0.0), True, False
-    raise ValueError(mode)
+def _conv_ids(tdir):
+    return sorted({int(re.search(r"conv_(\d+)_", p.name).group(1))
+                   for p in Path(tdir).glob("conv_*_turn_*.pt")})
 
 
-def build_m2s(vdir, refused, name, mode, cfg, hw):
+def build_source(tdir, cfg, label, refused_ids=None, group_offset=0,
+                 source_name="src", n_turns=3):
+    """Build examples from one tensor folder.
+    label: 0.0 or 1.0 for every conversation from this source.
+    refused_ids: conversation_ids to SKIP (drop). None = keep all.
+    group_offset: added to conv id so malicious/benign never share a group id.
+    """
+    refused_ids = refused_ids or set()
     ex = []
-    for pt in sorted(Path(vdir).glob("prompt_*.pt")):
-        S = int(re.search(r"prompt_(\d+)\.pt", pt.name).group(1))
-        v, ok, _ = _vec(pt, cfg)
-        if not ok:
-            continue
-        complied = S not in refused
-        y, inl, hard = _turn_label(mode, True, complied, 1, 1, None)
-        ex.append(dict(group=S, source=f"m2s_{name}", seq=[v], y=[y],
-                       loss=[inl], w=[hw if hard else 1.0]))
-    return ex
-
-
-def build_multi(mdir, rturns, mode, cfg, hw, n_turns=3):
-    ex = []
-    convs = sorted({int(re.search(r"conv_(\d+)_", p.name).group(1))
-                    for p in Path(mdir).glob("conv_*_turn_*.pt")})
-    for S in convs:
-        rt = rturns.get(S, None); complied = rt is None
+    for S in _conv_ids(tdir):
+        if S in refused_ids:
+            continue                                  # DROP refused conversations
         seq = []
         for t in range(1, n_turns + 1):
-            pt = Path(mdir) / f"conv_{S:04d}_turn_{t:02d}.pt"
+            pt = Path(tdir) / f"conv_{S:04d}_turn_{t:02d}.pt"
             if not pt.exists():
                 break
             v, ok, _ = _vec(pt, cfg)
@@ -146,38 +88,10 @@ def build_multi(mdir, rturns, mode, cfg, hw, n_turns=3):
             seq.append(v)
         if not seq:
             continue
-        ys, ls, ws = [], [], []
-        for t in range(1, len(seq) + 1):
-            y, inl, hard = _turn_label(mode, True, complied, t, len(seq), rt)
-            ys.append(y); ls.append(inl); ws.append(hw if hard else 1.0)
-        ex.append(dict(group=S, source="multi_turn", seq=seq, y=ys, loss=ls, w=ws))
-    return ex
-
-
-def build_benign(bdir, cfg):
-    ex = []; d = Path(bdir)
-    for pt in sorted(d.glob("prompt_*.pt")):
-        S = int(re.search(r"prompt_(\d+)\.pt", pt.name).group(1))
-        v, ok, _ = _vec(pt, cfg)
-        if ok:
-            ex.append(dict(group=BENIGN_GROUP_OFFSET + S, source="benign_st",
-                           seq=[v], y=[0.0], loss=[True], w=[1.0]))
-    convs = sorted({int(re.search(r"conv_(\d+)_", p.name).group(1))
-                    for p in d.glob("conv_*_turn_*.pt")})
-    for S in convs:
-        seq = []
-        for t in range(1, 6):
-            pt = d / f"conv_{S:04d}_turn_{t:02d}.pt"
-            if not pt.exists():
-                break
-            v, ok, _ = _vec(pt, cfg)
-            if not ok:
-                break
-            seq.append(v)
-        if seq:
-            n = len(seq)
-            ex.append(dict(group=BENIGN_GROUP_OFFSET + 10000 + S, source="benign_mt",
-                           seq=seq, y=[0.0]*n, loss=[True]*n, w=[1.0]*n))
+        n = len(seq)
+        ex.append(dict(group=S + group_offset, source=source_name,
+                       seq=seq, y=[label] * n,
+                       loss=[True] * n, w=[1.0] * n))
     return ex
 
 
@@ -200,69 +114,67 @@ def pad_and_pack(ex, max_len=None):
                 source=SRC, dim=dim, max_len=max_len)
 
 
-def assemble(project_root, refusal_dir, mode="T2", cfg=None,
-             families=("pythonize", "hyphenize", "numberize", "multiturn"),
-             benign_dir=None, hard_weight=3.0):
+def assemble(project_root, refusal_dir, mode="T1", cfg=None,
+             families=None, benign_dir=None, hard_weight=1.0):
+    """T1-compliance assembly. `mode`/`families`/`hard_weight` kept in the
+    signature for compatibility with the CV/experiment scripts, but this v4
+    always builds harmful-compliance (1) vs benign-compliance (0)."""
     cfg = cfg or FeatureConfig()
-    project_root, rdir = Path(project_root), Path(refusal_dir)
+    root = Path(project_root)
     pool = cfg.local_pool
+
+    mal_dir = _tensor_dir(root, MALICIOUS_DIR, pool)
+    ben_dir = _tensor_dir(root, BENIGN_DIR, pool)
+    refused = load_refused_ids(Path(refusal_dir) / MALICIOUS_REFUSALS)
+
+    if not any(mal_dir.glob("conv_*_turn_*.pt")):
+        raise SystemExit(f"No malicious tensors under {mal_dir}")
+    if not any(ben_dir.glob("conv_*_turn_*.pt")):
+        raise SystemExit(f"No benign tensors under {ben_dir}")
+
     ex = []
-    for v in M2S_VARIANTS:
-        if v not in families:
-            continue
-        vdir = resolve_tensor_dir(project_root, pool, v)
-        if any(vdir.glob("prompt_*.pt")):
-            ex += build_m2s(vdir, load_m2s_refusals(rdir / f"m2s_{v}_refusals.json"),
-                            v, mode, cfg, hard_weight)
-    if "multiturn" in families:
-        mdir = resolve_tensor_dir(project_root, pool, "multiturn")
-        if any(mdir.glob("conv_*_turn_*.pt")):
-            ex += build_multi(mdir,
-                              load_multi_refusals(rdir / "multi_turn_refusals.json"),
-                              mode, cfg, hard_weight)
-    if mode == "T1":
-        bdir = Path(benign_dir) if benign_dir else resolve_tensor_dir(project_root, pool, "benign")
-        if not bdir.exists() or not any(bdir.iterdir()):
-            raise SystemExit("T1 needs benign routing tensors (pass --benign_dir or put "
-                             f"them under {POOL_DIRNAME.get(pool, 'mean_pool_tensors')}/benign/).")
-        ex += build_benign(bdir, cfg)
+    # malicious: drop refusals, label 1
+    ex += build_source(mal_dir, cfg, label=1.0, refused_ids=refused,
+                       group_offset=0, source_name="malicious")
+    n_mal = len(ex)
+    # benign: keep all, label 0, offset groups so no collision
+    ex += build_source(ben_dir, cfg, label=0.0, refused_ids=None,
+                       group_offset=BENIGN_GROUP_OFFSET, source_name="benign")
+    n_ben = len(ex) - n_mal
+
     if not ex:
-        want = POOL_DIRNAME.get(pool, "mean_pool_tensors")
-        raise SystemExit(
-            f"No examples found under {project_root}/{want}/ for families={families}. "
-            "If you asked for top-K, run the top-K extraction first — topk_pool_tensors "
-            "is empty until you re-extract with the patched zaya_*.py.")
+        raise SystemExit("No examples assembled — check tensor folders and refusal file.")
+
     packed = pad_and_pack(ex)
-    packed["mode"] = mode; packed["feature_config"] = cfg.__dict__
+    packed["mode"] = "T1"
+    packed["feature_config"] = cfg.__dict__
+    packed["n_malicious"] = n_mal
+    packed["n_benign"] = n_ben
     return packed
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", required=True,
-                    help="PROJECT root that contains mean_pool_tensors/, "
-                         "topk_pool_tensors/, refusals/ (e.g. 'E:/P3 Defense').")
-    ap.add_argument("--refusal_dir", required=True)
-    ap.add_argument("--benign_dir", default=None,
-                    help="T1 only. Defaults to <root>/<pool>_pool_tensors/benign/.")
-    ap.add_argument("--mode", default="T2", choices=["T1", "T2", "T3"])
-    ap.add_argument("--families", nargs="+",
-                    default=["pythonize", "multiturn"])
+                    help="PROJECT root containing Malicious_Tensors/, Benign_Tensors/, refusals/")
+    ap.add_argument("--refusal_dir", required=True,
+                    help="folder containing multi_turn_refusals.json (malicious refusals to drop)")
     ap.add_argument("--local_pool", default="mean", choices=["mean", "topk"])
     ap.add_argument("--K", type=int, default=5)
     ap.add_argument("--use_logits", action="store_true")
-    ap.add_argument("--hard_weight", type=float, default=3.0)
-    ap.add_argument("--out", default="dataset.pt")
+    ap.add_argument("--out", default="dataset_t1.pt")
     a = ap.parse_args()
+
     cfg = FeatureConfig(local_pool=a.local_pool, K=a.K, use_logits=a.use_logits)
-    packed = assemble(a.root, a.refusal_dir, a.mode, cfg,
-                      tuple(a.families), a.benign_dir, a.hard_weight)
+    packed = assemble(a.root, a.refusal_dir, "T1", cfg)
     torch.save(packed, a.out)
-    pos = (packed["Y"][packed["loss_mask"]] == 1).sum().item()
-    neg = (packed["Y"][packed["loss_mask"]] == 0).sum().item()
-    from collections import Counter
-    print(f"[build] mode={a.mode} families={a.families} pool={a.local_pool} K={a.K} "
-          f"dim={packed['dim']} pos/neg={pos}/{neg} sources={dict(Counter(packed['source']))}")
+
+    pos = int((packed["Y"][packed["loss_mask"]] == 1).sum())
+    neg = int((packed["Y"][packed["loss_mask"]] == 0).sum())
+    print(f"[build] T1-compliance  pool={a.local_pool} K={a.K} dim={packed['dim']}")
+    print(f"[build] conversations: {packed['n_malicious']} harmful(1) + "
+          f"{packed['n_benign']} benign(0) = {packed['n_malicious'] + packed['n_benign']}")
+    print(f"[build] scored turns: pos(harmful)/neg(benign) = {pos}/{neg}")
     print(f"[build] saved -> {a.out}")
 
 

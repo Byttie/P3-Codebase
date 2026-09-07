@@ -33,6 +33,22 @@ from model import RoutingGuard
 from train import focal_bce_with_logits, evaluate
 from build_dataset import assemble
 from routing_features import FeatureConfig
+import json as _json
+
+def _filter_to_groups(packed, keep_groups):
+    """Keep only rows whose group id is in keep_groups (dev-only CV)."""
+    if keep_groups is None:
+        return packed
+    keep = set(int(g) for g in keep_groups)
+    g = packed['group'].tolist()
+    idx = [i for i, gg in enumerate(g) if int(gg) in keep]
+    sel = torch.as_tensor(idx)
+    out = dict(packed)
+    for k in ('X','Y','loss_mask','weight','turn_mask','group'):
+        out[k] = packed[k][sel]
+    if 'source' in packed:
+        out['source'] = [packed['source'][i] for i in idx]
+    return out
 
 try:
     from sklearn.model_selection import StratifiedGroupKFold
@@ -110,6 +126,8 @@ def main():
     ap.add_argument("--batch", type=int, default=32)
     ap.add_argument("--gamma", type=float, default=2.0)
     ap.add_argument("--seed", type=int, default=1234)
+    ap.add_argument("--dev_groups", default=None,
+                    help="holdout_groups.json — restrict CV to dev conversations only")
     ap.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     a = ap.parse_args()
 
@@ -117,6 +135,10 @@ def main():
     cfg = FeatureConfig(local_pool=a.local_pool,
                         **({"K": a.K} if a.local_pool == "topk" else {}))
     packed = assemble(a.root, a.refusal_dir, a.mode, cfg, tuple(a.families))
+    if a.dev_groups:
+        dev_groups = _json.load(open(a.dev_groups))['dev_groups']
+        packed = _filter_to_groups(packed, dev_groups)
+        print(f'[dev-only] restricting CV to {len(dev_groups)} dev conversations')
 
     pool_desc = f"{a.local_pool}" + (f" K={a.K}" if a.local_pool == "topk" else "")
     print("=" * 66)

@@ -133,7 +133,7 @@ def run_training(packed, epochs=40, lr=1e-3, wd=1e-4, batch=32, gamma=2.0,
     if best_metrics is not None:
         save_confusion_matrix(best_metrics)
     return dict(state_dict=best_state, in_dim=dim, scaler_mu=mu, scaler_sigma=sigma,
-                append_zscore=append_zscore, mode=packed.get("mode"),
+                append_zscore=append_zscore, use_zscore=use_zscore, mode=packed.get("mode"),
                 feature_config=packed.get("feature_config"), val_metrics=best_metrics)
 
 
