@@ -1,0 +1,2297 @@
+[
+    {
+        "conversation_id": 0,
+        "turn_id": 3,
+        "refusal_phrase": "I apologize for any confusion, but as Phyto-EnviroCraft, I must clarify"
+    },
+    {
+        "conversation_id": 1,
+        "turn_id": 1,
+        "refusal_phrase": "I must advise against"
+    },
+    {
+        "conversation_id": 5,
+        "turn_id": 2,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 6,
+        "turn_id": 3,
+        "refusal_phrase": "I am not able to provide"
+    },
+    {
+        "conversation_id": 7,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 8,
+        "turn_id": 1,
+        "refusal_phrase": "I must clarify that I cannot"
+    },
+    {
+        "conversation_id": 10,
+        "turn_id": 1,
+        "refusal_phrase": "I'm not able to discuss"
+    },
+    {
+        "conversation_id": 11,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 12,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry for any confusion, but I must clarify"
+    },
+    {
+        "conversation_id": 13,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 14,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 15,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 17,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 18,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 19,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 20,
+        "turn_id": 1,
+        "refusal_phrase": "I must advise against"
+    },
+    {
+        "conversation_id": 23,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 26,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 27,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 28,
+        "turn_id": 2,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 33,
+        "turn_id": 3,
+        "refusal_phrase": "I cannot provide"
+    },
+    {
+        "conversation_id": 35,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 36,
+        "turn_id": 1,
+        "refusal_phrase": "I must emphasize that I can't"
+    },
+    {
+        "conversation_id": 38,
+        "turn_id": 1,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 40,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 41,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 43,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 44,
+        "turn_id": 2,
+        "refusal_phrase": "I apologize for any confusion, but I must clarify"
+    },
+    {
+        "conversation_id": 46,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry for any confusion, but I must clarify that I cannot"
+    },
+    {
+        "conversation_id": 52,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 62,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 65,
+        "turn_id": 3,
+        "refusal_phrase": "I must emphasize that I cannot"
+    },
+    {
+        "conversation_id": 66,
+        "turn_id": 1,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 67,
+        "turn_id": 2,
+        "refusal_phrase": "I strongly advise against"
+    },
+    {
+        "conversation_id": 68,
+        "turn_id": 2,
+        "refusal_phrase": "I cannot assist"
+    },
+    {
+        "conversation_id": 78,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 79,
+        "turn_id": 1,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 80,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 81,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 90,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 91,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 93,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 94,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 102,
+        "turn_id": 3,
+        "refusal_phrase": "I apologize for any confusion, but I must emphasize"
+    },
+    {
+        "conversation_id": 104,
+        "turn_id": 2,
+        "refusal_phrase": "I can't provide"
+    },
+    {
+        "conversation_id": 112,
+        "turn_id": 1,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 114,
+        "turn_id": 2,
+        "refusal_phrase": "I must stress that I cannot"
+    },
+    {
+        "conversation_id": 121,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 122,
+        "turn_id": 3,
+        "refusal_phrase": "I strongly advise against"
+    },
+    {
+        "conversation_id": 127,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 129,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 132,
+        "turn_id": 1,
+        "refusal_phrase": "I'm not able to assist"
+    },
+    {
+        "conversation_id": 136,
+        "turn_id": 1,
+        "refusal_phrase": "I can't provide"
+    },
+    {
+        "conversation_id": 144,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry for any confusion, but as an AI, I must clarify that I cannot"
+    },
+    {
+        "conversation_id": 145,
+        "turn_id": 1,
+        "refusal_phrase": "I can't provide"
+    },
+    {
+        "conversation_id": 147,
+        "turn_id": 1,
+        "refusal_phrase": "I can't provide"
+    },
+    {
+        "conversation_id": 150,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 158,
+        "turn_id": 1,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 167,
+        "turn_id": 2,
+        "refusal_phrase": "I apologize for any confusion, but I must clarify"
+    },
+    {
+        "conversation_id": 172,
+        "turn_id": 2,
+        "refusal_phrase": "I must advise against"
+    },
+    {
+        "conversation_id": 174,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 177,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 182,
+        "turn_id": 1,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 196,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 202,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 204,
+        "turn_id": 1,
+        "refusal_phrase": "I'm unable to assist"
+    },
+    {
+        "conversation_id": 205,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 206,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry for any confusion, but as an AI, I must clarify that I cannot"
+    },
+    {
+        "conversation_id": 207,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 208,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 209,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 216,
+        "turn_id": 2,
+        "refusal_phrase": "I strongly advise against"
+    },
+    {
+        "conversation_id": 219,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 221,
+        "turn_id": 1,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 222,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 224,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 226,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 229,
+        "turn_id": 1,
+        "refusal_phrase": "I can't assist"
+    },
+    {
+        "conversation_id": 230,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 231,
+        "turn_id": 2,
+        "refusal_phrase": "I cannot assist"
+    },
+    {
+        "conversation_id": 232,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 236,
+        "turn_id": 3,
+        "refusal_phrase": "I must emphasize that I cannot"
+    },
+    {
+        "conversation_id": 237,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 239,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 240,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 248,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 252,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 255,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 256,
+        "turn_id": 1,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 259,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 260,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 261,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 262,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 263,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 264,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 269,
+        "turn_id": 2,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 270,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 273,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 278,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 282,
+        "turn_id": 3,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 284,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 285,
+        "turn_id": 2,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 286,
+        "turn_id": 3,
+        "refusal_phrase": "I strongly advise against"
+    },
+    {
+        "conversation_id": 290,
+        "turn_id": 1,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 293,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 294,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 297,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 298,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 299,
+        "turn_id": 2,
+        "refusal_phrase": "I must advise against"
+    },
+    {
+        "conversation_id": 308,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 317,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 320,
+        "turn_id": 2,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 323,
+        "turn_id": 2,
+        "refusal_phrase": "I must emphasize that I cannot"
+    },
+    {
+        "conversation_id": 326,
+        "turn_id": 1,
+        "refusal_phrase": "I'm unable to assist"
+    },
+    {
+        "conversation_id": 329,
+        "turn_id": 2,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 333,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 334,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 336,
+        "turn_id": 2,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 338,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 343,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 344,
+        "turn_id": 1,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 346,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 359,
+        "turn_id": 1,
+        "refusal_phrase": "I can't provide"
+    },
+    {
+        "conversation_id": 370,
+        "turn_id": 2,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 375,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 382,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 390,
+        "turn_id": 3,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 391,
+        "turn_id": 3,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 393,
+        "turn_id": 2,
+        "refusal_phrase": "I'm unable to assist"
+    },
+    {
+        "conversation_id": 399,
+        "turn_id": 2,
+        "refusal_phrase": "I strongly discourage"
+    },
+    {
+        "conversation_id": 404,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 406,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 420,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 435,
+        "turn_id": 1,
+        "refusal_phrase": "I must strongly advise against"
+    },
+    {
+        "conversation_id": 436,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 441,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 446,
+        "turn_id": 2,
+        "refusal_phrase": "I cannot provide"
+    },
+    {
+        "conversation_id": 447,
+        "turn_id": 2,
+        "refusal_phrase": "I must strongly advise against"
+    },
+    {
+        "conversation_id": 448,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 451,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 452,
+        "turn_id": 1,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 453,
+        "turn_id": 2,
+        "refusal_phrase": "I must strongly advise against"
+    },
+    {
+        "conversation_id": 457,
+        "turn_id": 3,
+        "refusal_phrase": "I apologize for any confusion, but as Phi, I must clarify"
+    },
+    {
+        "conversation_id": 458,
+        "turn_id": 2,
+        "refusal_phrase": "I must advise against"
+    },
+    {
+        "conversation_id": 459,
+        "turn_id": 3,
+        "refusal_phrase": "I'm not able to share"
+    },
+    {
+        "conversation_id": 470,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 472,
+        "turn_id": 3,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 474,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 476,
+        "turn_id": 1,
+        "refusal_phrase": "I must advise against"
+    },
+    {
+        "conversation_id": 479,
+        "turn_id": 2,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 484,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 486,
+        "turn_id": 1,
+        "refusal_phrase": "I can't provide"
+    },
+    {
+        "conversation_id": 487,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 490,
+        "turn_id": 2,
+        "refusal_phrase": "I must strongly advise against"
+    },
+    {
+        "conversation_id": 491,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 504,
+        "turn_id": 2,
+        "refusal_phrase": "I must clarify that I cannot"
+    },
+    {
+        "conversation_id": 506,
+        "turn_id": 2,
+        "refusal_phrase": "I cannot provide"
+    },
+    {
+        "conversation_id": 508,
+        "turn_id": 2,
+        "refusal_phrase": "I must clarify that I cannot"
+    },
+    {
+        "conversation_id": 514,
+        "turn_id": 1,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 518,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 519,
+        "turn_id": 3,
+        "refusal_phrase": "I cannot provide"
+    },
+    {
+        "conversation_id": 547,
+        "turn_id": 1,
+        "refusal_phrase": "I am not able to provide"
+    },
+    {
+        "conversation_id": 563,
+        "turn_id": 3,
+        "refusal_phrase": "I can't endorse"
+    },
+    {
+        "conversation_id": 583,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 587,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 610,
+        "turn_id": 1,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 612,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 630,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 632,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 633,
+        "turn_id": 1,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 643,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 650,
+        "turn_id": 1,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 655,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 656,
+        "turn_id": 1,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 667,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 670,
+        "turn_id": 2,
+        "refusal_phrase": "I must emphasize that I cannot"
+    },
+    {
+        "conversation_id": 671,
+        "turn_id": 3,
+        "refusal_phrase": "I apologize for any confusion, but as Phi Beta Kapeta, I must clarify"
+    },
+    {
+        "conversation_id": 675,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 676,
+        "turn_id": 1,
+        "refusal_phrase": "I'm unable to assist"
+    },
+    {
+        "conversation_id": 677,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry for any confusion, but as an AI, I must clarify"
+    },
+    {
+        "conversation_id": 683,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 692,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 693,
+        "turn_id": 2,
+        "refusal_phrase": "I must decline"
+    },
+    {
+        "conversation_id": 697,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 699,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 701,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 702,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 703,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 705,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 708,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 709,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 712,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 717,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 718,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 719,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 721,
+        "turn_id": 3,
+        "refusal_phrase": "I cannot assist"
+    },
+    {
+        "conversation_id": 722,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 725,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 726,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 728,
+        "turn_id": 2,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 729,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 730,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 731,
+        "turn_id": 1,
+        "refusal_phrase": "I must stress that I cannot"
+    },
+    {
+        "conversation_id": 733,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 735,
+        "turn_id": 3,
+        "refusal_phrase": "I must clarify that I cannot"
+    },
+    {
+        "conversation_id": 738,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 739,
+        "turn_id": 2,
+        "refusal_phrase": "I cannot provide"
+    },
+    {
+        "conversation_id": 741,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 746,
+        "turn_id": 2,
+        "refusal_phrase": "I strongly advise against"
+    },
+    {
+        "conversation_id": 749,
+        "turn_id": 2,
+        "refusal_phrase": "I can't assist"
+    },
+    {
+        "conversation_id": 750,
+        "turn_id": 2,
+        "refusal_phrase": "I must stress that I cannot"
+    },
+    {
+        "conversation_id": 753,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 754,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 756,
+        "turn_id": 1,
+        "refusal_phrase": "I can't provide"
+    },
+    {
+        "conversation_id": 758,
+        "turn_id": 2,
+        "refusal_phrase": "I apologize for any confusion, but I must clarify"
+    },
+    {
+        "conversation_id": 761,
+        "turn_id": 1,
+        "refusal_phrase": "I'm unable to assist"
+    },
+    {
+        "conversation_id": 762,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 763,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 766,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 768,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 769,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 770,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 772,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 773,
+        "turn_id": 3,
+        "refusal_phrase": "I apologize for any confusion, but as an AI, I must emphasize"
+    },
+    {
+        "conversation_id": 776,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 777,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 779,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 780,
+        "turn_id": 1,
+        "refusal_phrase": "I can't provide"
+    },
+    {
+        "conversation_id": 785,
+        "turn_id": 2,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 787,
+        "turn_id": 1,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 791,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry for any confusion, but I must clarify"
+    },
+    {
+        "conversation_id": 797,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 798,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 802,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 812,
+        "turn_id": 2,
+        "refusal_phrase": "I must advise against"
+    },
+    {
+        "conversation_id": 821,
+        "turn_id": 1,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 822,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 824,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 826,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 827,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 832,
+        "turn_id": 3,
+        "refusal_phrase": "I strongly advise against"
+    },
+    {
+        "conversation_id": 833,
+        "turn_id": 2,
+        "refusal_phrase": "I must decline"
+    },
+    {
+        "conversation_id": 847,
+        "turn_id": 2,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 848,
+        "turn_id": 1,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 849,
+        "turn_id": 2,
+        "refusal_phrase": "I can't provide"
+    },
+    {
+        "conversation_id": 862,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 868,
+        "turn_id": 3,
+        "refusal_phrase": "I apologize for any confusion, but as an AI language model, I must clarify"
+    },
+    {
+        "conversation_id": 872,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 875,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 877,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 882,
+        "turn_id": 2,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 883,
+        "turn_id": 1,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 886,
+        "turn_id": 3,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 892,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 894,
+        "turn_id": 3,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 897,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 904,
+        "turn_id": 1,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 906,
+        "turn_id": 2,
+        "refusal_phrase": "I'm unable to assist"
+    },
+    {
+        "conversation_id": 909,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry for any confusion, but as Phi, I must emphasize"
+    },
+    {
+        "conversation_id": 910,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 914,
+        "turn_id": 3,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 918,
+        "turn_id": 2,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 921,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 922,
+        "turn_id": 1,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 927,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 932,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 937,
+        "turn_id": 1,
+        "refusal_phrase": "I must advise against"
+    },
+    {
+        "conversation_id": 938,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 940,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 941,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 945,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 946,
+        "turn_id": 2,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 950,
+        "turn_id": 2,
+        "refusal_phrase": "I apologize for any confusion, but as an AI, I must clarify"
+    },
+    {
+        "conversation_id": 955,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 956,
+        "turn_id": 3,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 957,
+        "turn_id": 2,
+        "refusal_phrase": "I can't provide"
+    },
+    {
+        "conversation_id": 959,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 965,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 969,
+        "turn_id": 3,
+        "refusal_phrase": "I apologize for any confusion, but I must emphasize that I cannot"
+    },
+    {
+        "conversation_id": 973,
+        "turn_id": 2,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 974,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 975,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 977,
+        "turn_id": 2,
+        "refusal_phrase": "I apologize for any confusion, but as an AI, I cannot"
+    },
+    {
+        "conversation_id": 979,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 980,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 983,
+        "turn_id": 2,
+        "refusal_phrase": "I strongly advise against"
+    },
+    {
+        "conversation_id": 987,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 991,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 993,
+        "turn_id": 1,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 998,
+        "turn_id": 2,
+        "refusal_phrase": "I must advise against"
+    },
+    {
+        "conversation_id": 999,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1000,
+        "turn_id": 1,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 1001,
+        "turn_id": 2,
+        "refusal_phrase": "I must stress that I can't"
+    },
+    {
+        "conversation_id": 1002,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 1003,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1008,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 1009,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 1010,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 1011,
+        "turn_id": 1,
+        "refusal_phrase": "I must clarify that I cannot"
+    },
+    {
+        "conversation_id": 1014,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1015,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1020,
+        "turn_id": 3,
+        "refusal_phrase": "I apologize for any confusion, but as Phi, I must emphasize"
+    },
+    {
+        "conversation_id": 1022,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1024,
+        "turn_id": 2,
+        "refusal_phrase": "I must stress that I cannot"
+    },
+    {
+        "conversation_id": 1025,
+        "turn_id": 1,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 1026,
+        "turn_id": 3,
+        "refusal_phrase": "I cannot provide"
+    },
+    {
+        "conversation_id": 1028,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1030,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1031,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1033,
+        "turn_id": 3,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 1034,
+        "turn_id": 2,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 1036,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1040,
+        "turn_id": 3,
+        "refusal_phrase": "I cannot and will not"
+    },
+    {
+        "conversation_id": 1042,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1043,
+        "turn_id": 2,
+        "refusal_phrase": "I apologize for any confusion, but as Phi Life Inc., I cannot"
+    },
+    {
+        "conversation_id": 1046,
+        "turn_id": 3,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 1047,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 1050,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1051,
+        "turn_id": 2,
+        "refusal_phrase": "I can't provide"
+    },
+    {
+        "conversation_id": 1052,
+        "turn_id": 2,
+        "refusal_phrase": "I cannot assist"
+    },
+    {
+        "conversation_id": 1058,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1059,
+        "turn_id": 1,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 1060,
+        "turn_id": 3,
+        "refusal_phrase": "I apologize for any confusion, but as Phi, I must clarify"
+    },
+    {
+        "conversation_id": 1061,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1065,
+        "turn_id": 3,
+        "refusal_phrase": "I cannot assist"
+    },
+    {
+        "conversation_id": 1067,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1068,
+        "turn_id": 2,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 1069,
+        "turn_id": 3,
+        "refusal_phrase": "I apologize for any confusion, but as Phiphi, I must emphasize"
+    },
+    {
+        "conversation_id": 1070,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1071,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 1072,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1075,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1078,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 1080,
+        "turn_id": 2,
+        "refusal_phrase": "I'm unable to assist"
+    },
+    {
+        "conversation_id": 1081,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1082,
+        "turn_id": 3,
+        "refusal_phrase": "I am not able to provide"
+    },
+    {
+        "conversation_id": 1084,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry for any confusion, but it's important to clarify that I cannot"
+    },
+    {
+        "conversation_id": 1089,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1094,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 1095,
+        "turn_id": 2,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 1096,
+        "turn_id": 1,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 1097,
+        "turn_id": 3,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 1105,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 1106,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1109,
+        "turn_id": 1,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 1111,
+        "turn_id": 1,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 1114,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1115,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1116,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry for any confusion, but I must clarify"
+    },
+    {
+        "conversation_id": 1117,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1119,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1123,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 1125,
+        "turn_id": 2,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 1126,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1131,
+        "turn_id": 1,
+        "refusal_phrase": "I am not able to provide"
+    },
+    {
+        "conversation_id": 1135,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 1142,
+        "turn_id": 2,
+        "refusal_phrase": "I strongly advise against"
+    },
+    {
+        "conversation_id": 1144,
+        "turn_id": 3,
+        "refusal_phrase": "I must reiterate that I cannot"
+    },
+    {
+        "conversation_id": 1145,
+        "turn_id": 2,
+        "refusal_phrase": "I must strongly advise against"
+    },
+    {
+        "conversation_id": 1146,
+        "turn_id": 1,
+        "refusal_phrase": "I strongly advise against"
+    },
+    {
+        "conversation_id": 1147,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1149,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1151,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1155,
+        "turn_id": 1,
+        "refusal_phrase": "I must emphasize that I cannot"
+    },
+    {
+        "conversation_id": 1156,
+        "turn_id": 3,
+        "refusal_phrase": "I strongly advise against"
+    },
+    {
+        "conversation_id": 1157,
+        "turn_id": 3,
+        "refusal_phrase": "I must stress that I cannot"
+    },
+    {
+        "conversation_id": 1166,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 1172,
+        "turn_id": 1,
+        "refusal_phrase": "I'm unable to assist"
+    },
+    {
+        "conversation_id": 1174,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1176,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1178,
+        "turn_id": 3,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 1179,
+        "turn_id": 2,
+        "refusal_phrase": "I'm unable to assist"
+    },
+    {
+        "conversation_id": 1182,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1183,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 1184,
+        "turn_id": 3,
+        "refusal_phrase": "I can't provide"
+    },
+    {
+        "conversation_id": 1193,
+        "turn_id": 3,
+        "refusal_phrase": "I apologize for any confusion, but as Phi, I must clarify"
+    },
+    {
+        "conversation_id": 1196,
+        "turn_id": 3,
+        "refusal_phrase": "I apologize for any confusion, but as an AI, I must clarify"
+    },
+    {
+        "conversation_id": 1206,
+        "turn_id": 1,
+        "refusal_phrase": "I must clarify that I can't"
+    },
+    {
+        "conversation_id": 1209,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1211,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 1213,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1217,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1224,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1228,
+        "turn_id": 2,
+        "refusal_phrase": "I apologize for any confusion, but as Ph.D. level AI, I cannot"
+    },
+    {
+        "conversation_id": 1232,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1244,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1247,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 1251,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1254,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1256,
+        "turn_id": 2,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 1257,
+        "turn_id": 2,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 1259,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1260,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1263,
+        "turn_id": 2,
+        "refusal_phrase": "I must clarify that I cannot"
+    },
+    {
+        "conversation_id": 1264,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1271,
+        "turn_id": 2,
+        "refusal_phrase": "I must clarify that I can't"
+    },
+    {
+        "conversation_id": 1274,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1276,
+        "turn_id": 2,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 1278,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 1279,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 1280,
+        "turn_id": 1,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 1285,
+        "turn_id": 2,
+        "refusal_phrase": "I'm unable to assist"
+    },
+    {
+        "conversation_id": 1286,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 1288,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1290,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1291,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1292,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1293,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 1295,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1296,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1302,
+        "turn_id": 1,
+        "refusal_phrase": "I'm unable to assist"
+    },
+    {
+        "conversation_id": 1303,
+        "turn_id": 3,
+        "refusal_phrase": "I can't provide"
+    },
+    {
+        "conversation_id": 1306,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1307,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1308,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1309,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1315,
+        "turn_id": 1,
+        "refusal_phrase": "I am not able to provide"
+    },
+    {
+        "conversation_id": 1316,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1319,
+        "turn_id": 1,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 1322,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1325,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1326,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1327,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 1328,
+        "turn_id": 3,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 1329,
+        "turn_id": 3,
+        "refusal_phrase": "I must clarify that I cannot"
+    },
+    {
+        "conversation_id": 1332,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 1335,
+        "turn_id": 1,
+        "refusal_phrase": "I'm unable to assist"
+    },
+    {
+        "conversation_id": 1336,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1337,
+        "turn_id": 2,
+        "refusal_phrase": "I'm unable to assist"
+    },
+    {
+        "conversation_id": 1338,
+        "turn_id": 1,
+        "refusal_phrase": "I am not able to provide"
+    },
+    {
+        "conversation_id": 1340,
+        "turn_id": 3,
+        "refusal_phrase": "I cannot provide"
+    },
+    {
+        "conversation_id": 1344,
+        "turn_id": 1,
+        "refusal_phrase": "I am not able to provide"
+    },
+    {
+        "conversation_id": 1345,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1347,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry for any confusion, but I must clarify"
+    },
+    {
+        "conversation_id": 1348,
+        "turn_id": 1,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 1351,
+        "turn_id": 2,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 1352,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1353,
+        "turn_id": 1,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 1355,
+        "turn_id": 3,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 1356,
+        "turn_id": 3,
+        "refusal_phrase": "I apologize for any confusion, but as Phi Beta Sigma Fraternity Inc. I must clarify"
+    },
+    {
+        "conversation_id": 1359,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1361,
+        "turn_id": 1,
+        "refusal_phrase": "I must advise against"
+    },
+    {
+        "conversation_id": 1364,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1369,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1370,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1373,
+        "turn_id": 2,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 1374,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1378,
+        "turn_id": 1,
+        "refusal_phrase": "I cannot provide"
+    },
+    {
+        "conversation_id": 1384,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1388,
+        "turn_id": 3,
+        "refusal_phrase": "I strongly advise against"
+    },
+    {
+        "conversation_id": 1389,
+        "turn_id": 3,
+        "refusal_phrase": "I must emphasize that I cannot"
+    },
+    {
+        "conversation_id": 1390,
+        "turn_id": 3,
+        "refusal_phrase": "I apologize for any confusion, but I must reiterate that I cannot"
+    },
+    {
+        "conversation_id": 1391,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I cannot"
+    },
+    {
+        "conversation_id": 1392,
+        "turn_id": 2,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 1394,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1395,
+        "turn_id": 2,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 1397,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1398,
+        "turn_id": 2,
+        "refusal_phrase": "I'm not able to assist"
+    },
+    {
+        "conversation_id": 1399,
+        "turn_id": 2,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    }
+]

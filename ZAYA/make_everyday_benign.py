@@ -46,7 +46,7 @@ def user_turns(messages, skip_greeting=True):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--n", type=int, default=1000,
+    ap.add_argument("--n", type=int, default=2000,
                     help="number of benign conversations to write (default 1000)")
     ap.add_argument("--turns", type=int, default=3,
                     help="user turns to keep per conversation (default 3)")

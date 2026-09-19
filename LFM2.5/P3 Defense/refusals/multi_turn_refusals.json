@@ -1,0 +1,2232 @@
+[
+    {
+        "conversation_id": 0,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1,
+        "turn_id": 1,
+        "refusal_phrase": "I'm not able to help"
+    },
+    {
+        "conversation_id": 3,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 5,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 9,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 10,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 16,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 17,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 18,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 19,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 23,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 27,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 28,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 29,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 33,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 34,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 35,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 36,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 38,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 39,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 40,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 41,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 45,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 46,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 54,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 58,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 59,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 62,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 65,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 66,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 68,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 72,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 75,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 80,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 81,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 85,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 90,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 91,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 92,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 93,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 94,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 96,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 103,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 105,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 108,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 121,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 122,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 127,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 129,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 131,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 144,
+        "turn_id": 3,
+        "refusal_phrase": "I cannot assist with"
+    },
+    {
+        "conversation_id": 156,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 169,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 170,
+        "turn_id": 3,
+        "refusal_phrase": "I'm really sorry, but I can't"
+    },
+    {
+        "conversation_id": 172,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 174,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 188,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 190,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 192,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 196,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 197,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 202,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 205,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 206,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 210,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 211,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 214,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 216,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 217,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 219,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 221,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 222,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 224,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 226,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 229,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 230,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 232,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 235,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 236,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 237,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 238,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 239,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 240,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 247,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 248,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 250,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 251,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 252,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 253,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 255,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 256,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 257,
+        "turn_id": 3,
+        "refusal_phrase": "I cannot endorse or condone"
+    },
+    {
+        "conversation_id": 259,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 260,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 261,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 263,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 266,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 270,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 271,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 274,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 277,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 282,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 284,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 285,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 290,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 291,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 293,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 294,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 297,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 299,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 306,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 307,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 308,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 323,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 324,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 329,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 330,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 332,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 343,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 344,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 346,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 352,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 353,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 355,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 356,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 359,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 360,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 364,
+        "turn_id": 1,
+        "refusal_phrase": "My programming guides me to avoid"
+    },
+    {
+        "conversation_id": 365,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 370,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 371,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 372,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 375,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 382,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 384,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 389,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 391,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 392,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 399,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 402,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 404,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 405,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 430,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 432,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 435,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 437,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 442,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 443,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 451,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 453,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 466,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 469,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 470,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 476,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 477,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 482,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 487,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 504,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 506,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 563,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 583,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 587,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 598,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 601,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 604,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 612,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 613,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 615,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 619,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 622,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 623,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 629,
+        "turn_id": 3,
+        "refusal_phrase": "I cannot and will not"
+    },
+    {
+        "conversation_id": 630,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 632,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 639,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 642,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 645,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 649,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 656,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 667,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 668,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 670,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 674,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 675,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 676,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 683,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 684,
+        "turn_id": 2,
+        "refusal_phrase": "I cannot take personal position"
+    },
+    {
+        "conversation_id": 687,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 692,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 693,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 697,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 701,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 702,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 703,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 705,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 708,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 709,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 710,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 712,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 714,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 715,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 718,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 719,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 721,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 722,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 723,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 725,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 728,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 729,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 731,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 732,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 733,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 737,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 738,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 741,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 745,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 749,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 750,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 752,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 753,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 754,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 756,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 758,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 760,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 761,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 763,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 766,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 768,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 769,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 770,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 771,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 772,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 774,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 776,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 777,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 779,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 785,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 790,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 795,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 797,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 798,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 802,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 808,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 812,
+        "turn_id": 2,
+        "refusal_phrase": "I can't help with"
+    },
+    {
+        "conversation_id": 818,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 820,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 822,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 827,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 832,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 833,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 847,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 849,
+        "turn_id": 2,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 850,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 851,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 865,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 872,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 875,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 878,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 882,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 889,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 892,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 894,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 897,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 901,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 904,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 906,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 908,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 912,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 918,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 921,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 924,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 937,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 941,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 942,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 950,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 954,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 955,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 956,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 957,
+        "turn_id": 2,
+        "refusal_phrase": "I can't provide"
+    },
+    {
+        "conversation_id": 959,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 961,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 965,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 974,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 977,
+        "turn_id": 3,
+        "refusal_phrase": "I cannot provide"
+    },
+    {
+        "conversation_id": 979,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 980,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 987,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 991,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 993,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 995,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 996,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1002,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1003,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1008,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1009,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1010,
+        "turn_id": 3,
+        "refusal_phrase": "I cannot provide"
+    },
+    {
+        "conversation_id": 1014,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1015,
+        "turn_id": 3,
+        "refusal_phrase": "I cannot provide"
+    },
+    {
+        "conversation_id": 1020,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1021,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1022,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1023,
+        "turn_id": 1,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 1024,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1025,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1026,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1028,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1030,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1033,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1036,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1037,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1040,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1041,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1042,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1043,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1046,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1047,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1051,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1052,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1053,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1054,
+        "turn_id": 3,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 1055,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1057,
+        "turn_id": 3,
+        "refusal_phrase": "I cannot assist with"
+    },
+    {
+        "conversation_id": 1059,
+        "turn_id": 1,
+        "refusal_phrase": "I'm not able to provide"
+    },
+    {
+        "conversation_id": 1060,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1061,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1062,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1065,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1068,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1070,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1071,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1072,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1074,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1075,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1076,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1078,
+        "turn_id": 3,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 1080,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1081,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1082,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1086,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1089,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1091,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1093,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1094,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1095,
+        "turn_id": 2,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 1096,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1097,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1098,
+        "turn_id": 3,
+        "refusal_phrase": "I'm unable to provide"
+    },
+    {
+        "conversation_id": 1099,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, I can't"
+    },
+    {
+        "conversation_id": 1103,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1104,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1106,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1108,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1114,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1117,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1119,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1126,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1131,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1133,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1139,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1140,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1145,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1146,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1149,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1151,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1154,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1156,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1166,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1167,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1170,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1172,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1174,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1176,
+        "turn_id": 3,
+        "refusal_phrase": "I cannot and will not"
+    },
+    {
+        "conversation_id": 1177,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1179,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1180,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1183,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1184,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1185,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1192,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1193,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1195,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1197,
+        "turn_id": 3,
+        "refusal_phrase": "I can't help with"
+    },
+    {
+        "conversation_id": 1203,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1209,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1215,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1229,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1232,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1240,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1254,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1272,
+        "turn_id": 3,
+        "refusal_phrase": "I can't endorse or justify"
+    },
+    {
+        "conversation_id": 1278,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1279,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1286,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1288,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1289,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1291,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1292,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1293,
+        "turn_id": 2,
+        "refusal_phrase": "I cannot provide"
+    },
+    {
+        "conversation_id": 1294,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1295,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1300,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1305,
+        "turn_id": 3,
+        "refusal_phrase": "I can't help with"
+    },
+    {
+        "conversation_id": 1306,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1307,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1308,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1309,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1311,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1312,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1314,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1319,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1321,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1322,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1325,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1326,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1328,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1332,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1335,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1336,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1337,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1338,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1340,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1343,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1344,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1350,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1351,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1352,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1355,
+        "turn_id": 3,
+        "refusal_phrase": "I can't provide"
+    },
+    {
+        "conversation_id": 1359,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1361,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1364,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1373,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1374,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1377,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1378,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1383,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1384,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1385,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1387,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1389,
+        "turn_id": 3,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1391,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1392,
+        "turn_id": 2,
+        "refusal_phrase": "I can't provide"
+    },
+    {
+        "conversation_id": 1393,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1394,
+        "turn_id": 1,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1395,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1398,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    },
+    {
+        "conversation_id": 1399,
+        "turn_id": 2,
+        "refusal_phrase": "I'm sorry, but I can't"
+    }
+]
