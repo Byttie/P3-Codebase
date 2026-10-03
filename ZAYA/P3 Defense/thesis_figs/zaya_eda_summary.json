@@ -1,0 +1,18 @@
+{
+  "tag": "zaya",
+  "n_turns": 5106,
+  "n_malicious_complied": 2028,
+  "n_benign_complied": 3078,
+  "dim": 1360,
+  "dim_probs": 680,
+  "layers": 40,
+  "experts": 17,
+  "mean_abs_r_probs": 0.09201417125871149,
+  "mean_abs_r_hist": 0.10753295195499181,
+  "mean_sep_probs": 0.05981714068816487,
+  "mean_sep_hist": 0.0656957066582126,
+  "best_single_dim_auc": 0.8756097224945628,
+  "best_single_dim_feature": "hist",
+  "best_single_dim_layer": 16,
+  "best_single_dim_expert": 4
+}
